@@ -16,26 +16,57 @@
 
 ## Usage
 
-0. copy `multibar.js` (or .min), `multibar.css` (or .min) and `icon` folder into your project
+1. copy `multibar.js` (or .min), `multibar.css` (or .min) and `icon` folder into your project
 
-1. include `multibar.js` and `multibar.css`
+2. include `multibar.js` and `multibar.css`
 
 ```html
 <link rel="stylesheet" type="text/css" href="multibar.css" />
 <script type="text/javascript" src="multibar.js"></script>
 ```
 
-2. activate `multi-bar` functionality in this way:
+3. activate `multi-bar` functionality in this way:
 
 ```html
 <div id="boxMultibar"></div>
 ```
 ```javascript
-$('#boxMultibar').multibar([5]);
+$('#boxMultibar').multibar([3]);
 ```
 ![Alt text](/demo/single_marker.png "Bar with single marker and default options")
-### init bar and values
 
+### Init bar and set value
+When initialized and create a multi-bar is mandatory to pass it,as firste argument, an array of values (at least one value) that will be the marker(s) of your multi-bar.
+Initialize a multi-bar just passing an array of values creates a multi-bar with the default options, that is:
+
+```javascript
+{
+min:0,
+max:10,
+multiBarValue:[
+{
+val:2,
+bgColor:"green"
+},
+{
+val:4,
+bgColor:"yellow"
+},
+{
+val:6,
+bgColor:"orange"
+},
+{
+val:8,
+bgColor:"red"
+},
+{
+val:10,
+bgColor:"purple"
+}
+]
+};
+```
 
 
 ## Settings
