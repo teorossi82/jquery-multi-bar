@@ -84,4 +84,4 @@ Initialize a multi-bar just passing an array of values creates a multi-bar with 
 
 ## Copyright and license
 
-Copyright 2015 Matteo Rossi, under [MIT license](https://github.com/teorossi82/multi-bar/archive/master/LICENSE).
+Copyright 2015 Matteo Rossi, under [MIT license](https://github.com/teorossi82/multi-bar/blob/master/LICENSE.md).
