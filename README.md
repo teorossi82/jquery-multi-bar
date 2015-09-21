@@ -74,6 +74,7 @@ Initialize a multi-bar just passing an array of values creates a multi-bar with 
 
 ## Settings
 You can customize the look of your multi-bar through a series of settings:
+
 1. Minimum and maximum value
 ```javascript
     var options = {
