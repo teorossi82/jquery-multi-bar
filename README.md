@@ -43,6 +43,10 @@ Initialize a multi-bar just passing an array of values creates a multi-bar with 
 {
     min:0,
     max:10,
+    type:"normal",
+    reverse:false,
+    posMarker:"outside",
+    iconMarker:"arrow-down",
     multiBarValue:[
         {
             val:2,
