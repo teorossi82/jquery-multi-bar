@@ -85,7 +85,10 @@ You can customize the look of your multi-bar through a series of settings:
 ```
 ![Alt text](/demo/options_minMax.png "Bar with single marker and options: min and max")
 
-2. Set bar colors (multiBarValue)
+1. Set bar colors (multiBarValue)
+To create a multi-bar with custom colors you have to set in the options the field `multiBarValue`, which consists of an array containing many objects are the blocks where you want to split your multi-bar. Each object in the array is formed by two fields:
+    * `val` that identifies the value up to which the block must arrive
+    * `bgColor` that identifies the background color of the block
 ```javascript
     var options = {
         multiBarValue:[
