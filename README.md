@@ -5,7 +5,7 @@
 
 ## Demo
 
-* http://www.minddust.com/project/bootstrap-progressbar/demo/
+* coming soon
 
 
 ## Installation
