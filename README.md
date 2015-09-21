@@ -75,7 +75,7 @@ Initialize a multi-bar just passing an array of values creates a multi-bar with 
 ## Settings
 You can customize the look of your multi-bar through a series of settings:
 
-1. Minimum and maximum value (min, max)
+- Minimum and maximum value (min, max)
 ```javascript
     var options = {
         min:20,
@@ -85,7 +85,7 @@ You can customize the look of your multi-bar through a series of settings:
 ```
 ![Alt text](/demo/options_minMax.png "Bar with single marker and options: min and max")
 
-1. Set bar colors (multiBarValue)
+- Set bar colors (multiBarValue)
 
     > To create a multi-bar with custom colors you have to set in the options the field `multiBarValue`, which consists of an array containing many objects are the blocks where you want to split your multi-bar. Each object in the array is formed by two fields:
     > * `val` that identifies the value up to which the block must arrive. If you want your multi-bar is completely filled, the value of the filed `val` for the last block have to be equal to the maximum value of your multi-bar (10 if the maximum value is set as the default)
@@ -112,7 +112,14 @@ You can customize the look of your multi-bar through a series of settings:
 ```
 ![Alt text](/demo/options_customBarColors.png "Bar with single marker and options: multiBarValue")
 
-
+- Direction reverse, progress bar from maximum value to minimum value (reverse)
+```javascript
+    var options = {
+        reverse:true
+    };
+    $('#boxMultibar').multibar([8],options);
+```
+![Alt text](/demo/options_reverse.png "Bar with single marker and options: reverse")
 
 ## Copyright and license
 
