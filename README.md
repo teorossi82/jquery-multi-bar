@@ -10,8 +10,8 @@
 
 ## Installation
 
-* Download the latest release: [v0.1.0](https://github.com/minddust/bootstrap-progressbar/archive/v0.9.0.zip)
-* Clone the repository: `git clone git@github.com:minddust/bootstrap-progressbar.git`
+* Download the latest release: [v0.1.0](https://github.com/teorossi82/multi-bar/archive/master.zip)
+* Clone the repository: `git clone https://github.com/teorossi82/multi-bar.git`
 
 
 ## Usage
