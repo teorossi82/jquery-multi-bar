@@ -73,12 +73,18 @@ Initialize a multi-bar just passing an array of values creates a multi-bar with 
 
 
 ## Settings
+You can customize the look of your multi-bar through a series of settings:
+1. Minimum and maximum value
+```javascript
+    var options = {
+        min:20,
+        max:50
+    };
+    $('#boxMultibar').multibar([25],options);
+```
+![Alt text](/demo/options_minMax.png "Bar with single marker and options: min and max")
 
 
-
-## Known Problems
-
-* Looks like iOS Safari is flooring the width of the transition. So if you want to display text with a correct value you have to use a full bar width **greater or equal 100px**.
 
 ## Copyright and license
 
