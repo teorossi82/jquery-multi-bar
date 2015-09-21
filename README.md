@@ -34,7 +34,7 @@
 $('#boxMultibar').multibar([3]);
 ```
 
-## Init bar and set value
+## Create bar and set values
 When initialized and create a multi-bar is mandatory to pass it, as first argument, an array of values (at least one value) that will be the marker(s) of your multi-bar.
 Initialize a multi-bar just passing an array of values creates a multi-bar with the default options, that is:
 
@@ -84,6 +84,4 @@ Initialize a multi-bar just passing an array of values creates a multi-bar with 
 
 ## Copyright and license
 
-Copyright 2013-2015 Stephan Groß, under [MIT license](https://github.com/minddust/bootstrap-progressbar/blob/master/LICENSE).
-
-Want to appreciate my work? [minddust at Gittip](https://www.gittip.com/minddust/)
+Copyright 2015 Matteo Rossi, under [MIT license](https://github.com/teorossi82/multi-bar/archive/master/LICENSE).
