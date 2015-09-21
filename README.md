@@ -31,8 +31,12 @@
 <div id="boxMultibar"></div>
 ```
 ```javascript
-$('#boxMultibar').multibar();
+$('#boxMultibar').multibar([5]);
 ```
+![Alt text](/demo/single_marker.png "Bar with single marker and default options")
+### init bar and values
+
+
 
 ## Settings
 
