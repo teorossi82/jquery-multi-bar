@@ -36,35 +36,35 @@ $('#boxMultibar').multibar([3]);
 ![Alt text](/demo/single_marker.png "Bar with single marker and default options")
 
 ### Init bar and set value
-When initialized and create a multi-bar is mandatory to pass it,as firste argument, an array of values (at least one value) that will be the marker(s) of your multi-bar.
+When initialized and create a multi-bar is mandatory to pass it, as first argument, an array of values (at least one value) that will be the marker(s) of your multi-bar.
 Initialize a multi-bar just passing an array of values creates a multi-bar with the default options, that is:
 
 ```javascript
 {
-min:0,
-max:10,
-multiBarValue:[
-{
-val:2,
-bgColor:"green"
-},
-{
-val:4,
-bgColor:"yellow"
-},
-{
-val:6,
-bgColor:"orange"
-},
-{
-val:8,
-bgColor:"red"
-},
-{
-val:10,
-bgColor:"purple"
-}
-]
+    min:0,
+    max:10,
+    multiBarValue:[
+    {
+    val:2,
+    bgColor:"green"
+    },
+    {
+    val:4,
+    bgColor:"yellow"
+    },
+    {
+    val:6,
+    bgColor:"orange"
+    },
+    {
+    val:8,
+    bgColor:"red"
+    },
+    {
+    val:10,
+    bgColor:"purple"
+    }
+    ]
 };
 ```
 
