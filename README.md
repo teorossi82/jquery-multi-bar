@@ -33,8 +33,6 @@
 ```javascript
 $('#boxMultibar').multibar([3]);
 ```
-
-## Create bar and set values
 When initialized and create a multi-bar is mandatory to pass it, as first argument, an array of values (at least one value) that will be the marker(s) of your multi-bar.
 Initialize a multi-bar just passing an array of values creates a multi-bar with the default options, that is:
 
