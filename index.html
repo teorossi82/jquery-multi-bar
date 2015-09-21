@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>MultiBar</title>
+        <link rel="stylesheet" type="text/css" href="multibar.css" />
+        <script type="text/javascript" src="jquery/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="multibar.js"></script>
+    </head>
+
+    <body>
+        <h4>Bar with single marker and default options</h4>
+        <div id="boxMultibar_default" style="width:400px;"></div>
+        <h4>Bar with single marker with position inside and direction reverse (from max to min)</h4>
+        <div id="boxMultibar_default_reverse" style="width:400px;"></div>
+        <h4>Bar with multi marker and custom bar colors</h4>
+        <div id="boxMultibar_multiItems_customColors" style="width:400px;"></div>
+        <h4>Bar with multi marker, custom bar colors and legend</h4>
+        <div id="boxMultibar_multiItems_customColors_legend" style="width:400px;"></div>
+        <button onclick="setValue()">Set Value</button>
+        <h4>Bar with multi marker's custom style, custom bar colors and legend</h4>
+        <div id="boxMultibar_customMultiItems_customColors_legend" style="width:400px;"></div>
+        <h4>Bar with scale of hot colors (type:hot)</h4>
+        <div id="boxMultibar_hot" style="width:400px;"></div>
+        <h4>Bar with scale of cold colors (type:cold)</h4>
+        <div id="boxMultibar_cold" style="width:400px;"></div>
+        <hr/>
+        <script type="text/javascript">
+            
+            //Bar with single marker and default options
+            $("#boxMultibar_default").multibar(
+                [3]
+            );
+            
+            //Bar with single marker and direction reverse (from max to min)
+            $("#boxMultibar_default_reverse").multibar(
+                [3],
+                {
+                    reverse:true,
+                    posMarker:"inside",
+                    iconMarker:"arrow-down-up"
+                }
+            );
+            
+            //Bar with multi marker and custom bar colors
+            $("#boxMultibar_multiItems_customColors").multibar(
+                [35,40,70],
+                {
+                    min:20,
+                    max:75,
+                    multiBarValue:[
+                        {
+                            val:40,
+                            bgColor:"#CCC"
+                        },
+                        {
+                            val:50,
+                            bgColor:"#999"
+                        },
+                        {
+                            val:75,
+                            bgColor:"#000"
+                        }
+                    ]
+                }
+            );
+            
+            //Bar with multi marker, custom bar colors and legend
+            var barra = $("#boxMultibar_multiItems_customColors_legend").multibar(
+                [35,40,70],
+                {
+                    min:20,
+                    max:75,
+                    multiBarValue:[
+                        {
+                            val:40,
+                            bgColor:"red"
+                        },
+                        {
+                            val:50,
+                            bgColor:"yellow"
+                        },
+                        {
+                            val:75,
+                            bgColor:"green"
+                        }
+                    ],
+                    legend:{
+                        show:true,
+                        //content:"#legend"
+                    }
+                }
+            );
+            function setValue(){
+                var val = [
+                    {
+                        label:"Item 1",
+                        value:35,
+                        color:"#444444"
+                    },
+                    {
+                        label:"Item 2",
+                        value:40,
+                        color:"#FF0000"
+                    },
+                    {
+                        label:"Item 3",
+                        value:70,
+                        color:"#214AE0"
+                    }
+                ];
+                barra.data('multibar').setValue(val);
+            }
+            
+            //Bar with multi marker's custom style, custom bar colors and legend
+            $("#boxMultibar_customMultiItems_customColors_legend").multibar(
+                [
+                    {
+                        label:"Item 1",
+                        value:35,
+                        color:"#444444"
+                    },
+                    {
+                        label:"Item 2",
+                        value:40,
+                        color:"#FF0000"
+                    },
+                    {
+                        label:"Item 3",
+                        value:70,
+                        color:"#214AE0"
+                    }
+                ],
+                {
+                    min:20,
+                    max:75,
+                    multiBarValue:[
+                        {
+                            val:40,
+                            bgColor:"red"
+                        },
+                        {
+                            val:50,
+                            bgColor:"yellow"
+                        },
+                        {
+                            val:75,
+                            bgColor:"green"
+                        }
+                    ],
+                    legend:{
+                        show:true,
+                        //content:"#legend"
+                    }
+                }
+            );
+            
+            //Bar with scale of hot colors (type:hot)
+            $("#boxMultibar_hot").multibar(
+                [22,41,10],
+                {
+                    min:0,
+                    max:50,
+                    type:"hot"
+                }
+            );
+            
+            //Bar with scale of cold colors (type:cold)
+            $("#boxMultibar_cold").multibar(
+                [8,30,47,80],
+                {
+                    min:0,
+                    max:100,
+                    type:"cold"
+                }
+            );
+        </script>
+    </body>
+</html>
