@@ -75,7 +75,7 @@ Initialize a multi-bar just passing an array of values creates a multi-bar with 
 ## Settings
 You can customize the look of your multi-bar through a series of settings:
 
-1. Minimum and maximum value
+1. Minimum and maximum value (min, max)
 ```javascript
     var options = {
         min:20,
@@ -84,6 +84,28 @@ You can customize the look of your multi-bar through a series of settings:
     $('#boxMultibar').multibar([25],options);
 ```
 ![Alt text](/demo/options_minMax.png "Bar with single marker and options: min and max")
+
+2. Set bar colors (multiBarValue)
+```javascript
+    var options = {
+        multiBarValue:[
+            {
+                val:4,
+                bgColor:"#0037FF"
+            },
+            {
+                val:7,
+                bgColor:"#10FF00"
+            },
+            {
+                val:10,
+                bgColor:"#000"
+            }
+        ]
+    };
+    $('#boxMultibar').multibar([6],options);
+```
+![Alt text](/demo/options_customBarColors.png "Bar with single marker and options: multiBarValue")
 
 
 
