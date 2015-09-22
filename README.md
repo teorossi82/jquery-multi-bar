@@ -298,6 +298,9 @@ By default the legend appear inside the element where you have initialized the m
 ```
 ![Alt text](/demo/multi_value_legend_content.png "Bar with multi marker, legend and content legend")
 
+## Bug, questions, contributions?
+If you want to report me bugs, suggestions for improvement or work togheter to maintain this plugin, please write me at email: teorossi82@yahoo.it.
+
 ## Copyright and license
 
 Copyright 2015 Matteo Rossi, under [MIT license](https://github.com/teorossi82/multi-bar/blob/master/LICENSE.md).
