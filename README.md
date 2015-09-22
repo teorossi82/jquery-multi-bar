@@ -28,14 +28,30 @@
 3. create your `multi-bar` element in this way:
 
 ```html
-    <div id="boxMultibar"></div>
+<div id="boxMultibar"></div>
 ```
 ```javascript
-    $('#boxMultibar').multibar();
+$('#boxMultibar').multibar();
 ```
-Initialize a multi-bar without passing any options creates a multi-bar with the default options, that is:
 
-### default values
+When initialized and create a multi-bar you only create the multi-bar element, without a value and a marker assigned. 
+![Alt text](/demo/single_marker.png "Bar with single marker and default options")
+
+To assign a marker to your multi-bar you have to use the method `multibar('setValue',values)`.
+In this method is mandatory to pass it, as first argument, an array of values (at least one value) that will be the marker(s) of your multi-bar.
+
+```html
+<div id="boxMultibar"></div>
+```
+```javascript
+var bar = $('#boxMultibar').multibar();
+bar.multibar('setValue',[3]);
+```
+![Alt text](/demo/single_marker.png "Bar with single marker and default options")
+
+## Settings
+Initialize a multi-bar without passing any options creates a multi-bar with the default options that are:
+
 ```javascript
 {
     min:0,
@@ -70,20 +86,6 @@ Initialize a multi-bar without passing any options creates a multi-bar with the 
 ```
 ![Alt text](/demo/single_marker.png "Bar with single marker and default options")
 
-## Set marker to your multi-bar
-When initialized and create a multi-bar you only create the multi-bar element, without a value and a marker assigned. To assign a marker to your multi-bar you have to use the method `multibar('setValue')`.
-In this method is mandatory to pass it, as first argument, an array of values (at least one value) that will be the marker(s) of your multi-bar.
-
-```html
-    <div id="boxMultibar"></div>
-```
-```javascript
-    var bar = $('#boxMultibar').multibar();
-    bar.multibar('setValue',[3]);
-```
-![Alt text](/demo/single_marker.png "Bar with single marker and default options")
-
-## Settings
 You can customize the look of your multi-bar through a series of settings:
 
 - Minimum and maximum value (min, max)
