@@ -8,8 +8,8 @@
 
 
 ## Installation
-* Download the latest release: [v0.1.0](https://github.com/teorossi82/multi-bar/archive/master.zip)
-* Clone the repository: `git clone https://github.com/teorossi82/multi-bar.git`
+* Download the latest release: [v0.1.0](https://github.com/teorossi82/jquery-multi-bar/archive/master.zip)
+* Clone the repository: `git clone https://github.com/teorossi82/jquery-multi-bar.git`
 
 ## Requirements
 The plugin requires
@@ -364,7 +364,8 @@ If you want to report me bugs, suggestions for improvement or work togheter to m
 ## Work in progress
 - Add more type of bar (thermometer, 3d);
 - Add "position" in setting ("horizontal","vertical");
-- Add possibility to set class of all bar blocks and not only background color.
+- Add possibility to set class of all bar blocks and not only background color;
+- Add method and event.
 
 ## Copyright and license
-Copyright 2015 Matteo Rossi, under [MIT license](https://github.com/teorossi82/multi-bar/blob/master/LICENSE.md).
+Copyright 2015 Matteo Rossi, under [MIT license](https://github.com/teorossi82/jquery-multi-bar/blob/master/LICENSE.md).
