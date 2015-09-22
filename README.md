@@ -279,6 +279,7 @@ You can show the legend of your multi-bar, setting in the options object the fie
 ```
 ![Alt text](/demo/multi_value_custom_style_legend.png "Bar with multi marker customized and legend")
 
+#### Content of the Legend
 By default the legend appear inside the element where you have initialized the multi-bar. If you want to put the legend in another element of the dom, you have to pass in the options of the legend, the filed `content`, where you can specified the content element of the legend.
 
 ```html
