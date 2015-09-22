@@ -130,6 +130,15 @@ You can customize the look of your multi-bar through a series of settings:
 ```
 ![Alt text](/demo/options_posMarker.png "Bar with single marker and options: posMarker")
 
+- Set the icon of the marker(s) at your choice (iconMarker)
+```javascript
+    var options = {
+        iconMarker:"hand-down"
+    };
+    $('#boxMultibar').multibar([8],options);
+```
+![Alt text](/demo/options_iconMarker.png "Bar with single marker and options: iconMarker")
+
 ## Copyright and license
 
 Copyright 2015 Matteo Rossi, under [MIT license](https://github.com/teorossi82/multi-bar/blob/master/LICENSE.md).
