@@ -121,6 +121,15 @@ You can customize the look of your multi-bar through a series of settings:
 ```
 ![Alt text](/demo/options_reverse.png "Bar with single marker and options: reverse")
 
+- Position the marker(s) inside or outside the bar (posMarker)
+```javascript
+    var options = {
+        posMarker:"inside"
+    };
+    $('#boxMultibar').multibar([8],options);
+```
+![Alt text](/demo/options_posMarker.png "Bar with single marker and options: posMarker")
+
 ## Copyright and license
 
 Copyright 2015 Matteo Rossi, under [MIT license](https://github.com/teorossi82/multi-bar/blob/master/LICENSE.md).
