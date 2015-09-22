@@ -5,7 +5,7 @@
 
 ## Demo
 
-* coming soon
+* Take a look at index.html
 
 
 ## Installation
@@ -16,7 +16,7 @@
 
 ## Usage
 
-1. copy `multibar.js` (or .min), `multibar.css` (or .min) and `icon` folder into your project
+1. copy `multibar.js` (or .min), `multibar.css` (or .min) and `multi-bar-icon` folder into your project
 
 2. include `multibar.js` and `multibar.css`
 
