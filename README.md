@@ -4,7 +4,6 @@
 
 
 ## Demo
-------------
 * Take a look at index.html
 
 
