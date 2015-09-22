@@ -142,6 +142,16 @@ You can customize the look of your multi-bar through a series of settings:
 > The set of icons you can choose among them is the following:
 ![Alt text](/demo/multi_bar_icon.png "Multi-bar marker's icons")
 
+- Set the size of the multi-bar (size)
+    * `size:"big"`
+    ```javascript
+        var options = {
+            size:"big"
+        };
+        $('#boxMultibar').multibar([4],options);
+    ```
+    ![Alt text](/demo/options_size_big.png "Bar with single marker and options: size big")
+
 ### Type of bar
 In addition to the classic multi-bar, with default or custom settings, you can also create other types of multi-bar, simply by specifying in the options the field `type`:
 
