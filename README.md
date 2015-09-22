@@ -139,8 +139,23 @@ You can customize the look of your multi-bar through a series of settings:
 ```
 ![Alt text](/demo/options_iconMarker.png "Bar with single marker and options: iconMarker")
 
-> The set of icons you can choose among them is as follows:
+> The set of icons you can choose among them is the following:
 ![Alt text](/demo/multi_bar_icon.png "Multi-bar marker's icons")
+
+### Type of bar
+In addition to the classic multi-bar, with default or custom settings, you can also create other types of multi-bar, simply by specifying in the options the field `type`:
+
+- Type: hot (multi-bar with default hot colors)
+
+    > For this type of multi-bar you can not customize the colors of the blocks that compose the bar because they are preset
+    
+```javascript
+    var options = {
+        type:"hot"
+    };
+    $('#boxMultibar').multibar([7.4],options);
+```
+![Alt text](/demo/options_type_hot.png "Bar with single marker and type hot")
 
 
 ## Copyright and license
