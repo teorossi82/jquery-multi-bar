@@ -11,7 +11,7 @@
             var value = options.multiBarValue[b].val;
             var bgColor = options.multiBarValue[b].bgColor;
             if(!bgColor)
-                bgColor = MultiBar.prototype.colors.defaults[b];
+                bgColor = colors.defaults[b];
             if(b==0)
                 mulBar+='<div class="multi-bar-bar" style="background-color:' + bgColor + ';width:' + ((options.multiBarValue[b].val-options.min)/(options.max-options.min))*100 + '%"></div>';
             else
@@ -42,8 +42,8 @@
             mulBar += ' multi-bar-' + options.size + ' ';
         mulBar+=' ">';
         var indice = options.min;
-        for(var b=0;b<MultiBar.prototype.colors.hot.length;b++){
-            mulBar+='<div class="multi-bar-bar" style="background-color:' + MultiBar.prototype.colors.hot[b] + ';width:10%"></div>';
+        for(var b=0;b<colors.hot.length;b++){
+            mulBar+='<div class="multi-bar-bar" style="background-color:' + colors.hot[b] + ';width:10%"></div>';
         }
         mulBar+='</div>'
 
@@ -51,9 +51,9 @@
         if(options.reverse)
             valBar = '<div class="multi-bar-value-content reverse"><div class="multi-bar-initVal">' + options.min + '</div>';
         var indice = options.min;
-        for(var c=0;c<MultiBar.prototype.colors.hot.length;c++){
+        for(var c=0;c<colors.hot.length;c++){
             indice+=((options.max-options.min)/10)
-            if(c==MultiBar.prototype.colors.hot.length-1)
+            if(c==colors.hot.length-1)
                 valBar+='<div class="multi-bar-value-box" style="width:10%"></div>';
             else 
                 valBar+='<div class="multi-bar-value-box" style="width:10%"><div class="multi-bar-value">' + parseInt(indice) + '</div></div>';
@@ -71,8 +71,8 @@
             mulBar += ' multi-bar-' + options.size + ' ';
         mulBar+=' ">';
         var indice = options.min;
-        for(var b=0;b<MultiBar.prototype.colors.cold.length;b++){
-            mulBar+='<div class="multi-bar-bar" style="background-color:' + MultiBar.prototype.colors.cold[b] + ';width:10%"></div>';
+        for(var b=0;b<colors.cold.length;b++){
+            mulBar+='<div class="multi-bar-bar" style="background-color:' + colors.cold[b] + ';width:10%"></div>';
         }
         mulBar+='</div>'
 
@@ -80,9 +80,9 @@
         if(options.reverse)
             valBar = '<div class="multi-bar-value-content reverse"><div class="multi-bar-initVal">' + options.min + '</div>';
         var indice = options.min;
-        for(var c=0;c<MultiBar.prototype.colors.cold.length;c++){
+        for(var c=0;c<colors.cold.length;c++){
             indice+=((options.max-options.min)/10)
-            if(c==MultiBar.prototype.colors.cold.length-1)
+            if(c==colors.cold.length-1)
                 valBar+='<div class="multi-bar-value-box" style="width:10%"></div>';
             else 
                 valBar+='<div class="multi-bar-value-box" style="width:10%"><div class="multi-bar-value">' + parseInt(indice) + '</div></div>';
@@ -145,9 +145,8 @@
             $(ele.find(".multi-bar")[0]).append(
                 boxLeg
             );
-            $(ele.find(".multi-bar-content")[0]).css("width","68%");
-            $(ele.find(".multi-bar-content")[0]).css("margin","0% 1%");
-            $(ele.find(".multi-bar-content")[0]).css("float","left");
+            $(ele.find(".multi-bar-content")[0]).removeClass("no-legend");
+            $(ele.find(".multi-bar-content")[0]).addClass("yes-legend");
             $(ele.find(".multi-bar-legend-box")[0]).css("width","28%");
         }
         else{
@@ -160,11 +159,17 @@
 
     }
     
+    var colors={
+        defaults: ["green","yellow","orange","red","purple","blue","black","white"],
+        hot:["#F9F9BD","#F7F411","#ECD024","#FFA500","#E08E00","#FF350A","#E90000","#BE0028","#C10069","#8A0079"],
+        cold:["#A4FCB7","#A4FCD6","#A4FCF5","#A4F2FC","#A4E1FC","#A4CDFC","#A4ACFC","#5479CE","#4759FF","#0019FF"]
+    }
+    
     var MultiBar = function (element, arValue, options) {
         
         this.element = $(element);
         
-        var box = '<div class="multi-bar"><div class="multi-bar-content">';
+        var box = '<div class="multi-bar"><div class="multi-bar-content no-legend"><div class="multi-bar-marker-content"></div>';
         
         var bar;
         if(options.type && options.type=="hot")
@@ -174,9 +179,7 @@
         else
             bar = createBar(options);
         
-        var marker = createMarker(arValue,options);
-        
-        box+= marker + bar.mulBar + bar.valBar;
+        box+= bar.mulBar + bar.valBar;
         box+= '</div></div>';
         
         this.element.html(
@@ -189,15 +192,18 @@
         
         this.values= arValue;
         this.options= options;
+        
+        this.setValue(arValue);
+        
+        //Code for activate initial animation of the multi-bar
+        /*var ele = this.element;
+        setTimeout(function(){
+            $(ele.find(".multi-bar-content.no-legend")[0]).css("width","100%");
+        },50);*/
     };
 
     MultiBar.prototype = {
         constructor: MultiBar,
-        colors:{
-            defaults: ["green","yellow","orange","red","purple","blue","black","white"],
-            hot:["#F9F9BD","#F7F411","#ECD024","#FFA500","#E08E00","#FF350A","#E90000","#BE0028","#C10069","#8A0079"],
-            cold:["#A4FCB7","#A4FCD6","#A4FCF5","#A4F2FC","#A4E1FC","#A4CDFC","#A4ACFC","#5479CE","#4759FF","#0019FF"]
-        },
         setValue: function(arValue){
             var marker = createMarker(arValue,this.options);
             $($(this.element).find(".multi-bar-marker-content")[0]).replaceWith(marker);
@@ -230,9 +236,25 @@
                 if(!options)
                     $this.data('multibar', new MultiBar(this, val, $.fn.multibar.defaults));
                 else{
-                    if(!options.min) options.min=$.fn.multibar.defaults.min;
-                    if(!options.max) options.max=$.fn.multibar.defaults.max;
-                    if(!options.multiBarValue) options.multiBarValue=$.fn.multibar.defaults.multiBarValue;
+                    if(!options.min && options.min!=0)
+                        options.min=$.fn.multibar.defaults.min;
+                    if(!options.max && options.max!=0)
+                        options.max=$.fn.multibar.defaults.max;
+                    //if(!options.multiBarValue) options.multiBarValue=$.fn.multibar.defaults.multiBarValue;
+                    if(!options.multiBarValue){
+                        options.multiBarValue = [];
+                        var step = (options.max-options.min)/5
+                        var indice = options.min+step;
+                        for(var i=0;i<5;i++){
+                            options.multiBarValue.push(
+                                {
+                                    val:parseInt(indice),
+                                    bgColor:colors.defaults[i]
+                                }
+                            );
+                            indice+=(options.max-options.min)/5;
+                        }
+                    }
                     $this.data('multibar', new MultiBar(this, val, options));
                 }
             }
@@ -242,6 +264,10 @@
     $.fn.multibar.defaults = {
         min:0,
         max:10,
+        type:"normal",
+        reverse:false,
+        posMarker:"outside",
+        iconMarker:"arrow-down",
         multiBarValue:[
             {
                 val:2,

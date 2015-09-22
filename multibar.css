@@ -5,6 +5,18 @@
 .multi-bar-content{
     position:relative;
     font-family:Arial;
+    /* Code for activate initial animation of the multi-bar
+    width:0px;
+    transition: 0.5s linear;
+    -webkit-transition: 0.5s linear;
+    -moz-transition: 0.5s linear;
+    -o-transition: 0.5s linear;
+    -ms-transition: 0.5s linear;*/
+}
+.multi-bar-content.yes-legend{
+    width:68%;
+    margin:0% 1%;
+    float:left;
 }
 .multi-bar-box {
     background-color: #f5f5f5;
