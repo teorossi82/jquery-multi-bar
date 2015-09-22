@@ -151,6 +151,15 @@ You can customize the look of your multi-bar through a series of settings:
         $('#boxMultibar').multibar([4],options);
     ```
     ![Alt text](/demo/options_size_big.png "Bar with single marker and options: size big")
+    
+    * `size:"small"`
+    ```javascript
+        var options = {
+            size:"small"
+        };
+        $('#boxMultibar').multibar([4],options);
+    ```
+    ![Alt text](/demo/options_size_small.png "Bar with single marker and options: size small")
 
 ### Type of bar
 In addition to the classic multi-bar, with default or custom settings, you can also create other types of multi-bar, simply by specifying in the options the field `type`:
