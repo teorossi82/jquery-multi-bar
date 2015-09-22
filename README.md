@@ -4,18 +4,22 @@
 
 
 ## Demo
-
+------------
 * Take a look at index.html
 
 
 ## Installation
-
+------------
 * Download the latest release: [v0.1.0](https://github.com/teorossi82/multi-bar/archive/master.zip)
 * Clone the repository: `git clone https://github.com/teorossi82/multi-bar.git`
 
+## Requirements
+------------
+The plugin requires
+* [jQuery 1.4.1+](http://jquery.com)
 
-## Usage
-
+## Initialization & Usage
+------------
 1. copy `multibar.js` (or .min), `multibar.css` (or .min) and `multi-bar-icon` folder into your project
 
 2. include `multibar.js` and `multibar.css`
@@ -50,6 +54,7 @@ bar.multibar('setValue',[3]);
 ![Alt text](/demo/single_marker.png "Bar with single marker and default options")
 
 ## Settings
+------------
 Initialize a multi-bar without passing any options creates a multi-bar with the default options that are:
 
 ```javascript
@@ -223,7 +228,7 @@ In addition to the classic multi-bar, with default or custom settings, you can a
 
 
 ## Methods
-
+------------
 ### SetValue
 To assign a marker to your multi-bar you have to use the method `multibar('setValue',values)` after creating your multi-bar.
 In this method is mandatory to pass it, as first argument, an array of values (at least one value) that will be the marker(s) of your multi-bar.
@@ -276,6 +281,7 @@ You can destroy your multi-bar with the method `multibar('destroy')`.
 ```
 
 ## Legend
+------------
 You can show the legend of your multi-bar, setting in the options object the field `legend`. 
 
 ```javascript
@@ -338,8 +344,9 @@ By default the legend appear inside the element where you have initialized the m
 ![Alt text](/demo/multi_value_legend_content.png "Bar with multi marker, legend and content legend")
 
 ## Bug, questions, contributions?
+------------
 If you want to report me bugs, suggestions for improvement or work togheter to maintain this plugin, please write me at email: teorossi82@yahoo.it.
 
 ## Copyright and license
-
+------------
 Copyright 2015 Matteo Rossi, under [MIT license](https://github.com/teorossi82/multi-bar/blob/master/LICENSE.md).
