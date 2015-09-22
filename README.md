@@ -221,23 +221,63 @@ You can customize the style of the markers passing to the initialization functio
     var values = [
         {
             label:"Item 1",
-            value:35,
+            value:3,
             color:"#444444"
         },
         {
             label:"Item 2",
-            value:40,
+            value:4,
             color:"#FF0000"
         },
         {
             label:"Item 3",
-            value:70,
+            value:7,
             color:"#214AE0"
         }
     ];
     $('#boxMultibar').multibar(values);
 ```
 ![Alt text](/demo/multi_value_custom_style.png "Bar with multi marker customized")
+
+### Legend
+You can show the legend of your multi-bar setting, in the options object, the field `legend`. 
+
+```javascript
+    var options = {
+        legend:{
+            show:true
+        }
+    };
+    $('#boxMultibar').multibar([3,4,7],options);
+```
+![Alt text](/demo/multi_value_legend.png "Bar with multi marker and legend")
+
+```javascript
+    var values = [
+        {
+            label:"Item 1",
+            value:3,
+            color:"#444444"
+        },
+        {
+            label:"Item 2",
+            value:4,
+            color:"#FF0000"
+        },
+        {
+            label:"Item 3",
+            value:7,
+            color:"#214AE0"
+        }
+    ];
+    var options = {
+        legend:{
+            show:true
+        }
+    };
+    $('#boxMultibar').multibar(values,options);
+```
+![Alt text](/demo/multi_value_custom_style_legend.png "Bar with multi marker customized and legend")
 
 ## Copyright and license
 
