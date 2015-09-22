@@ -167,7 +167,17 @@ In addition to the classic multi-bar, with default or custom settings, you can a
     };
     $('#boxMultibar').multibar([4.5],options);
 ```
-![Alt text](/demo/options_type_cold.png "Bar with single marker and type hot")
+![Alt text](/demo/options_type_cold.png "Bar with single marker and type cold")
+
+```javascript
+    var options = {
+        type:"cold",
+        min:-100,
+        max:0
+    };
+    $('#boxMultibar').multibar([-40],options);
+```
+![Alt text](/demo/options_type_cold_min_max.png "Bar with single marker, type cold and options: min and max")
 
 
 ## Copyright and license
