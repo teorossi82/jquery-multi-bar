@@ -240,7 +240,7 @@ You can customize the style of the markers passing to the initialization functio
 ![Alt text](/demo/multi_value_custom_style.png "Bar with multi marker customized")
 
 ### Legend
-You can show the legend of your multi-bar setting, in the options object, the field `legend`. 
+You can show the legend of your multi-bar, setting in the options object the field `legend`. 
 
 ```javascript
     var options = {
@@ -278,6 +278,24 @@ You can show the legend of your multi-bar setting, in the options object, the fi
     $('#boxMultibar').multibar(values,options);
 ```
 ![Alt text](/demo/multi_value_custom_style_legend.png "Bar with multi marker customized and legend")
+
+By default the legend appear inside the element where you have initialized the multi-bar. If you want to put the legend in another element of the dom, you have to pass in the options of the legend, the filed `content`, where you can specified the content element of the legend.
+
+```html
+    <div id="boxMultibar"></div>
+    <h3>Legend's content</h3>
+    <div id="legendMultibar"></div>
+```
+```javascript
+    var options = {
+        legend:{
+            show:true,
+            content:"#legendMultibar"
+        }
+    };
+    $('#boxMultibar').multibar([3,4,7],options);
+```
+![Alt text](/demo/multi_value_legend_content.png "Bar with multi marker, legend and content legend")
 
 ## Copyright and license
 
