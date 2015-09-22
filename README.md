@@ -94,7 +94,8 @@ You can customize the look of your multi-bar through a series of settings:
         min:20,
         max:50
     };
-    $('#boxMultibar').multibar([25],options);
+    var bar = $('#boxMultibar').multibar(options);
+    bar.multibar('setValue',[25]);
 ```
 ![Alt text](/demo/options_minMax.png "Bar with single marker and options: min and max")
 
@@ -121,7 +122,8 @@ You can customize the look of your multi-bar through a series of settings:
             }
         ]
     };
-    $('#boxMultibar').multibar([6],options);
+    var bar = $('#boxMultibar').multibar(options);
+    bar.multibar('setValue',[6]);
 ```
 ![Alt text](/demo/options_customBarColors.png "Bar with single marker and options: multiBarValue")
 
@@ -130,7 +132,8 @@ You can customize the look of your multi-bar through a series of settings:
     var options = {
         reverse:true
     };
-    $('#boxMultibar').multibar([8],options);
+    var bar = $('#boxMultibar').multibar(options);
+    bar.multibar('setValue',[8]);
 ```
 ![Alt text](/demo/options_reverse.png "Bar with single marker and options: reverse")
 
@@ -139,7 +142,8 @@ You can customize the look of your multi-bar through a series of settings:
     var options = {
         posMarker:"inside"
     };
-    $('#boxMultibar').multibar([8],options);
+    var bar = $('#boxMultibar').multibar([8],options);
+    bar.multibar('setValue',[8]);
 ```
 ![Alt text](/demo/options_posMarker.png "Bar with single marker and options: posMarker")
 
@@ -148,7 +152,8 @@ You can customize the look of your multi-bar through a series of settings:
     var options = {
         iconMarker:"hand-down"
     };
-    $('#boxMultibar').multibar([8],options);
+    var bar = $('#boxMultibar').multibar(options);
+    bar.multibar('setValue',[8]);
 ```
 ![Alt text](/demo/options_iconMarker.png "Bar with single marker and options: iconMarker")
 
@@ -161,7 +166,8 @@ You can customize the look of your multi-bar through a series of settings:
         var options = {
             size:"big"
         };
-        $('#boxMultibar').multibar([4],options);
+        var bar = $('#boxMultibar').multibar(options);
+        bar.multibar('setValue',[4]);
     ```
     ![Alt text](/demo/options_size_big.png "Bar with single marker and options: size big")
     
@@ -170,7 +176,8 @@ You can customize the look of your multi-bar through a series of settings:
         var options = {
             size:"small"
         };
-        $('#boxMultibar').multibar([4],options);
+        var bar = $('#boxMultibar').multibar(options);
+        bar.multibar('setValue',[4]);
     ```
     ![Alt text](/demo/options_size_small.png "Bar with single marker and options: size small")
 
@@ -185,7 +192,8 @@ In addition to the classic multi-bar, with default or custom settings, you can a
     var options = {
         type:"hot"
     };
-    $('#boxMultibar').multibar([7.4],options);
+    var bar = $('#boxMultibar').multibar(options);
+    bar.multibar('setValue',[7.4]);
 ```
 ![Alt text](/demo/options_type_hot.png "Bar with single marker and type hot")
 
@@ -197,7 +205,8 @@ In addition to the classic multi-bar, with default or custom settings, you can a
     var options = {
         type:"cold"
     };
-    $('#boxMultibar').multibar([4.5],options);
+    var bar = $('#boxMultibar').multibar(options);
+    bar.multibar('setValue',[4.5]);
 ```
 ![Alt text](/demo/options_type_cold.png "Bar with single marker and type cold")
 
@@ -207,30 +216,37 @@ In addition to the classic multi-bar, with default or custom settings, you can a
         min:-100,
         max:0
     };
-    $('#boxMultibar').multibar([-40],options);
+    var bar = $('#boxMultibar').multibar(options);
+    bar.multibar('setValue',[-40]);
 ```
 ![Alt text](/demo/options_type_cold_min_max.png "Bar with single marker, type cold and options: min and max")
 
 
-## Values and markers
-To set the values (markers) of the multi-bar you have to pass as first argument in the initialization function, an array of value. Every field of the array will be a marker of your multi-bar.
+## Methods
+
+## SetValue
+To assign a marker to your multi-bar you have to use the method `multibar('setValue',values)` after creating your multi-bar.
+In this method is mandatory to pass it, as first argument, an array of values (at least one value) that will be the marker(s) of your multi-bar.
 
 - Single value
 ```javascript
-    $('#boxMultibar').multibar([8]);
+    var bar = $('#boxMultibar').multibar();
+    bar.multibar('setValue',[8]);
 ```
 ![Alt text](/demo/single_marker.png "Bar with single marker")
 
 - Multi values
 ```javascript
-    $('#boxMultibar').multibar([2,4,9]);
+    var bar = $('#boxMultibar').multibar([2,4,9]);
+    bar.multibar('setValue',[2,4,9]);
 ```
 ![Alt text](/demo/multi_value.png "Bar with multi marker")
 
 ### Customize the markers
-You can customize the style of the markers passing to the initialization function, rather than an array of values, an array of objects. The filed that you can set for every marker are: `label`, `value` (mandatory), `color`.
+You can customize the style of the markers passing to the `setValue` method, rather than an array of values, an array of objects. The filed that you can set for every marker are: `label`, `value` (mandatory), `color`.
 
 ```javascript
+    var bar = $('#boxMultibar').multibar();
     var values = [
         {
             label:"Item 1",
@@ -248,7 +264,7 @@ You can customize the style of the markers passing to the initialization functio
             color:"#214AE0"
         }
     ];
-    $('#boxMultibar').multibar(values);
+    bar.multibar('setValue',values);
 ```
 ![Alt text](/demo/multi_value_custom_style.png "Bar with multi marker customized")
 
