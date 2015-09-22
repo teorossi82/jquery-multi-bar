@@ -368,4 +368,4 @@ If you want to report me bugs, suggestions for improvement or work togheter to m
 - Add method and event.
 
 ## Copyright and license
-Copyright 2015 Matteo Rossi, under [MIT license](https://github.com/teorossi82/jquery-multi-bar/blob/master/LICENSE.md).
+Copyright @2015 Matteo Rossi, under [MIT license](https://github.com/teorossi82/jquery-multi-bar/blob/master/LICENSE.md).
