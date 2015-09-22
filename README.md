@@ -139,7 +139,7 @@ You can customize the look of your multi-bar through a series of settings:
 ```
 ![Alt text](/demo/options_iconMarker.png "Bar with single marker and options: iconMarker")
 
-> The set of icons you can choose among them is the following:
+    > The set of icons you can choose among them is the following:
 ![Alt text](/demo/multi_bar_icon.png "Multi-bar marker's icons")
 
 - Set the size of the multi-bar (size)
@@ -178,7 +178,7 @@ In addition to the classic multi-bar, with default or custom settings, you can a
 
 - Type: cold (multi-bar with default cold colors)
 
-> For this type of multi-bar you can not customize the colors of the blocks that compose the bar because they are preset
+    > For this type of multi-bar you can not customize the colors of the blocks that compose the bar because they are preset
 
 ```javascript
     var options = {
