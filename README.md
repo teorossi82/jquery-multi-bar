@@ -212,7 +212,32 @@ To set the values (markers) of the multi-bar you have to pass as first argument 
 ```javascript
     $('#boxMultibar').multibar([2,4,9]);
 ```
-![Alt text](/demo/multi_value.png "Bar with single marker")
+![Alt text](/demo/multi_value.png "Bar with multi marker")
+
+### Customize the markers
+You can customize the style of the markers passing to the initialization function, rather than an array of values, an array of objects. The filed that you can set for every marker are: `label`, `value` (mandatory), `color`.
+
+```javascript
+    var values = [
+        {
+            label:"Item 1",
+            value:35,
+            color:"#444444"
+        },
+        {
+            label:"Item 2",
+            value:40,
+            color:"#FF0000"
+        },
+        {
+            label:"Item 3",
+            value:70,
+            color:"#214AE0"
+        }
+    ];
+    $('#boxMultibar').multibar(values);
+```
+![Alt text](/demo/multi_value_custom_style.png "Bar with multi marker customized")
 
 ## Copyright and license
 
