@@ -35,6 +35,7 @@ $('#boxMultibar').multibar();
 ```
 
 When initialized and create a multi-bar you only create the multi-bar element, without a value and a marker assigned. 
+
 ![Alt text](/demo/single_marker.png "Bar with single marker and default options")
 
 To assign a marker to your multi-bar you have to use the method `multibar('setValue',values)`.
