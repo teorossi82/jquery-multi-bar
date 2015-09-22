@@ -363,6 +363,7 @@ If you want to report me bugs, suggestions for improvement or work togheter to m
 
 ## Work in progress
 - Add more type of bar (thermometer, 3d);
+- Add style for legend;
 - Add "position" in setting ("horizontal","vertical");
 - Add possibility to set class of all bar blocks and not only background color;
 - Add method and event.
