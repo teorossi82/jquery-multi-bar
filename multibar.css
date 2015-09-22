@@ -113,7 +113,19 @@
 .multi-bar-marker-content.reverse .multi-bar-marker{
     margin-right: -15px;
 }
+.multi-bar-marker-tooltip {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    color: #fff;
+    font-size: 12px;
+    left: 50%;
+    margin-left: -45px;
+    padding: 5px;
+    position: absolute;
+    text-align: center;
+    top: -27px;
+    width: 80px;
+}
 
 .multi-bar-legend-box {
     font-family: Arial;
