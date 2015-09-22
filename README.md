@@ -140,7 +140,7 @@ You can customize the look of your multi-bar through a series of settings:
 ![Alt text](/demo/options_iconMarker.png "Bar with single marker and options: iconMarker")
 
 > The set of icons you can choose among them is as follows:
-![Alt text](/demo/multi-bar-icon.png "Multi-bar marker's icons")
+![Alt text](/demo/multi_bar_icon.png "Multi-bar marker's icons")
 
 
 ## Copyright and license
