@@ -199,6 +199,21 @@ In addition to the classic multi-bar, with default or custom settings, you can a
 ![Alt text](/demo/options_type_cold_min_max.png "Bar with single marker, type cold and options: min and max")
 
 
+## Values and markers
+To set the values (markers) of the multi-bar you have to pass as first argument in the initialization function, an array of value. Every field of the array will be a marker of your multi-bar.
+
+- Single value
+```javascript
+    $('#boxMultibar').multibar([8]);
+```
+![Alt text](/demo/singleMarker.png "Bar with single marker")
+
+- Multi values
+```javascript
+    $('#boxMultibar').multibar([2,4,9]);
+```
+![Alt text](/demo/multi_value.png "Bar with single marker")
+
 ## Copyright and license
 
 Copyright 2015 Matteo Rossi, under [MIT license](https://github.com/teorossi82/multi-bar/blob/master/LICENSE.md).
