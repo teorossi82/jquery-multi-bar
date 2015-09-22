@@ -206,7 +206,7 @@ To set the values (markers) of the multi-bar you have to pass as first argument 
 ```javascript
     $('#boxMultibar').multibar([8]);
 ```
-![Alt text](/demo/singleMarker.png "Bar with single marker")
+![Alt text](/demo/single_marker.png "Bar with single marker")
 
 - Multi values
 ```javascript
