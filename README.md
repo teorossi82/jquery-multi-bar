@@ -24,7 +24,6 @@
 <link rel="stylesheet" type="text/css" href="multibar.css" />
 <script type="text/javascript" src="multibar.js"></script>
 ```
-
 3. create your `multi-bar` element in this way:
 
 ```html
