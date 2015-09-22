@@ -224,7 +224,7 @@ In addition to the classic multi-bar, with default or custom settings, you can a
 
 ## Methods
 
-## SetValue
+### SetValue
 To assign a marker to your multi-bar you have to use the method `multibar('setValue',values)` after creating your multi-bar.
 In this method is mandatory to pass it, as first argument, an array of values (at least one value) that will be the marker(s) of your multi-bar.
 
@@ -242,7 +242,7 @@ In this method is mandatory to pass it, as first argument, an array of values (a
 ```
 ![Alt text](/demo/multi_value.png "Bar with multi marker")
 
-### Customize the markers
+#### Customize the markers
 You can customize the style of the markers passing to the `setValue` method, rather than an array of values, an array of objects. The filed that you can set for every marker are: `label`, `value` (mandatory), `color`.
 
 ```javascript
@@ -268,7 +268,14 @@ You can customize the style of the markers passing to the `setValue` method, rat
 ```
 ![Alt text](/demo/multi_value_custom_style.png "Bar with multi marker customized")
 
-### Legend
+### Destroy
+You can destroy your multi-bar with the method `multibar('destroy')`.
+```javascript
+    var bar = $('#boxMultibar').multibar();
+    bar.multibar('destroy');
+```
+
+## Legend
 You can show the legend of your multi-bar, setting in the options object the field `legend`. 
 
 ```javascript
@@ -277,7 +284,8 @@ You can show the legend of your multi-bar, setting in the options object the fie
             show:true
         }
     };
-    $('#boxMultibar').multibar([3,4,7],options);
+    var bar = $('#boxMultibar').multibar(options);
+    bar.multibar('setValue',[3,4,7]);
 ```
 ![Alt text](/demo/multi_value_legend.png "Bar with multi marker and legend")
 
@@ -304,7 +312,8 @@ You can show the legend of your multi-bar, setting in the options object the fie
             show:true
         }
     };
-    $('#boxMultibar').multibar(values,options);
+    var bar = $('#boxMultibar').multibar(options);
+    bar.multibar('setValue',values);
 ```
 ![Alt text](/demo/multi_value_custom_style_legend.png "Bar with multi marker customized and legend")
 
@@ -323,7 +332,8 @@ By default the legend appear inside the element where you have initialized the m
             content:"#legendMultibar"
         }
     };
-    $('#boxMultibar').multibar([3,4,7],options);
+    var bar = $('#boxMultibar').multibar(options);
+    bar.multibar('setValue',[3,4,7]);
 ```
 ![Alt text](/demo/multi_value_legend_content.png "Bar with multi marker, legend and content legend")
 
