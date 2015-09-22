@@ -1,4 +1,4 @@
-!function ($) {
+(function ($) {
     
     var createBar = function(options){
         var mulBar = '<div class="multi-bar-box'
@@ -150,7 +150,7 @@
             $(ele.find(".multi-bar-legend-box")[0]).css("width","28%");
         }
         else{
-            $(ele.find(".multi-bar-legend-box")[0]).remove();
+            $($(conLegend).find(".multi-bar-legend-box")[0]).remove();
             $(conLegend).append(
                 boxLeg
             );
@@ -165,7 +165,7 @@
         cold:["#A4FCB7","#A4FCD6","#A4FCF5","#A4F2FC","#A4E1FC","#A4CDFC","#A4ACFC","#5479CE","#4759FF","#0019FF"]
     }
     
-    var MultiBar = function (element, arValue, options) {
+    var MultiBar = function (element, options) {
         
         this.element = $(element);
         
@@ -186,14 +186,7 @@
             box + '<div style="clear:both"></div>'
         );
         
-        var legend = options.legend && options.legend.show==true;
-        if(legend)
-            createLegend(arValue,options,this.element)
-        
-        this.values= arValue;
-        this.options= options;
-        
-        this.setValue(arValue);
+        this.options = options;
         
         //Code for activate initial animation of the multi-bar
         /*var ele = this.element;
@@ -210,53 +203,54 @@
             var legend = this.options.legend && this.options.legend.show==true;
             if(legend){
                 var boxLegend = createLegend(arValue,this.options,this.element);
-                /*var conLegend = this.options.legend.content;
-                if(!conLegend){
-                    $($(this.element).find(".multi-bar-legend-box")[0]).replaceWith(boxLegend);
-                }
-                else{
-                    $($(conLegend).find(".multi-bar-legend-box")[0]).replaceWith(boxLegend);
-                }*/
+            }
+        },
+        destroy: function(){
+            $($(this.element).find(".multi-bar")[0]).remove();
+            var legend = this.options.legend && this.options.legend.show==true;
+            if(legend){
+                var contLegend = this.options.legend.content;
+                if(contLegend)
+                    $($(contLegend).find(".multi-bar-legend-box")[0]).remove(); 
             }
         }
     };
 
-    $.fn.multibar = function (value,option) {
+    $.fn.multibar = function (options) {
         var args = Array.apply(null, arguments);
         args.shift();
         return this.each(function () {
             var $this = $(this),
                 data = $this.data('multibar'),
-                options = typeof option == 'object' && option,
-                val = typeof value == 'object' && value
-            
-            if(!val)
-                return console.log('Value not valid: ' + value);
+                opts;
             if (!data) {
-                if(!options)
-                    $this.data('multibar', new MultiBar(this, val, $.fn.multibar.defaults));
-                else{
-                    if(!options.min && options.min!=0)
-                        options.min=$.fn.multibar.defaults.min;
-                    if(!options.max && options.max!=0)
-                        options.max=$.fn.multibar.defaults.max;
-                    //if(!options.multiBarValue) options.multiBarValue=$.fn.multibar.defaults.multiBarValue;
-                    if(!options.multiBarValue){
-                        options.multiBarValue = [];
-                        var step = (options.max-options.min)/5
-                        var indice = options.min+step;
-                        for(var i=0;i<5;i++){
-                            options.multiBarValue.push(
-                                {
-                                    val:parseInt(indice),
-                                    bgColor:colors.defaults[i]
-                                }
-                            );
-                            indice+=(options.max-options.min)/5;
-                        }
-                    }
-                    $this.data('multibar', new MultiBar(this, val, options));
+                if(!options){
+                    $this.data('multibar',new MultiBar(this, $.fn.multibar.defaults));
+                    return
                 }
+                if(!options.min && options.min!=0)
+                    options.min = $.fn.multibar.defaults.min;
+                if(!options.max && options.max!=0)
+                    options.max = $.fn.multibar.defaults.max;
+                if(!options.multiBarValue){
+                    options.multiBarValue = [];
+                    var step = (options.max-options.min)/5
+                    var indice = options.min+step;
+                    for(var i=0;i<5;i++){
+                        options.multiBarValue.push(
+                            {
+                                val:parseInt(indice),
+                                bgColor:colors.defaults[i]
+                            }
+                        );
+                        indice+=(options.max-options.min)/5;
+                    }
+                }
+                opts = $.extend( {}, $.fn.multibar.defaults, options );
+                $this.data('multibar',new MultiBar(this, options));
+            } 
+            else if (typeof options == 'string' && typeof data[options] == 'function') {
+                data[options].apply(data, args);
             }
         });
     };
@@ -292,6 +286,4 @@
         ]
     };
 
-    $.fn.multibar.Constructor = MultiBar;
-
-} (window.jQuery);
+}(jQuery));
