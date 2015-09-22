@@ -157,6 +157,18 @@ In addition to the classic multi-bar, with default or custom settings, you can a
 ```
 ![Alt text](/demo/options_type_hot.png "Bar with single marker and type hot")
 
+- Type: cold (multi-bar with default cold colors)
+
+> For this type of multi-bar you can not customize the colors of the blocks that compose the bar because they are preset
+
+```javascript
+    var options = {
+        type:"cold"
+    };
+    $('#boxMultibar').multibar([4.5],options);
+```
+![Alt text](/demo/options_type_cold.png "Bar with single marker and type hot")
+
 
 ## Copyright and license
 
