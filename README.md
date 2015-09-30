@@ -1,4 +1,4 @@
-# jquery-multi-bar - 0.1.0
+# jquery-multi-bar - 0.2.0
 
 `jquery-multi-bar` is a [jQuery](http://jquery.com) plugin which you can build custom progress bar with multi and personalized colors. The number and style of the colors are at your choice, so 'as the initial and final values. This allows you to create progress bar completely tailored to your needs. You can assign one or more values to the bar and you'll see them appear as a marker on the bar itself. And, if you want, you can decide to show also the legend of the value. Unlike <a href="http://j-ulrich.github.com/jquery-ui-multiprogressbar">http://j-ulrich.github.com/jquery-ui-multiprogressbar</a> plugin, this plugin adds the ability to include one or more markers that identify some points on the bar and show the relative legend.
 
@@ -8,12 +8,15 @@
 
 
 ## Installation
-* Download the latest release: [v0.1.0](https://github.com/teorossi82/jquery-multi-bar/archive/master.zip)
+* Download the latest release: [v0.2.0](https://github.com/teorossi82/jquery-multi-bar/archive/master.zip)
 * Clone the repository: `git clone https://github.com/teorossi82/jquery-multi-bar.git`
 
 ## Requirements
 The plugin requires
 * [jQuery 1.4.1+](http://jquery.com)
+
+## What's new in v0.2.0?
+* Add `initValue` option that permit to set the value of your multi-bar's marker(s) at the initialization of the multi-bar.
 
 ## Initialization & Usage
 1. copy `multibar.js` (or .min), `multibar.css` (or .min) and `multi-bar-icon` folder into your project
@@ -48,6 +51,23 @@ var bar = $('#boxMultibar').multibar();
 bar.multibar('setValue',[3]);
 ```
 ![Alt text](/demo/single_marker.png "Bar with single marker and default options")
+
+#### From version 0.2.0
+From version 0.2.0 you can set the value of your multi-bar's marker(s) during the initialization of the plugin, passing through the options of the function `$('#boxMultibar').multibar()`, the option `initValue`.
+
+```javascript
+var bar = $('#boxMultibar').multibar();
+bar.multibar('setValue',[3]);
+```
+
+It's equal to
+
+```javascript
+var options = {
+    initValue:[3]
+}
+var bar = $('#boxMultibar').multibar(options);
+```
 
 ## Settings
 Initialize a multi-bar without passing any options creates a multi-bar with the default options that are:

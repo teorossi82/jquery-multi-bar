@@ -1,3 +1,12 @@
+/*!
+ * jquery-multibar v0.2.0 by @teorossi
+ * Copyright (c) 2015-2018 Matteo Rossi
+ *
+ * https://github.com/teorossi82/jquery-multi-bar
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
 (function ($) {
     
     var createBar = function(options){
@@ -117,7 +126,12 @@
                 value=arValue[i];
                 color="black";
             }
-            marker+= '<div class="multi-bar-marker" style="' + direction + ':' + ((value-options.min)/(options.max-options.min))*100 + '%;color:' + color + '">' + 
+            var markerPosition = ((value-options.min)/(options.max-options.min))*100;
+            if(value>options.max)
+                markerPosition=100;
+            else if(value<options.min)
+                markerPosition=0;
+            marker+= '<div class="multi-bar-marker" style="' + direction + ':' + markerPosition + '%;color:' + color + '">' + 
                 '<div class="multi-bar-marker-value">' + value + '</div>' + 
                 '<span class="icon-' + icon + '"></span>' +
                 '</div>'; 
@@ -187,6 +201,10 @@
         );
         
         this.options = options;
+        
+        if(options.initValue && typeof options.initValue == 'object'){
+            this.setValue(options.initValue);
+        }
         
         //Code for activate initial animation of the multi-bar
         /*var ele = this.element;

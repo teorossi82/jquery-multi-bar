@@ -3,17 +3,18 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>MultiBar</title>
-        <link rel="stylesheet" type="text/css" href="multibar.css" />
+        <title>jQuery MultiBar</title>
+        <link rel="stylesheet" type="text/css" href="multibar.min.css" />
         <script type="text/javascript" src="jquery/jquery-2.1.4.min.js"></script>
-        <script type="text/javascript" src="multibar.js"></script>
+        <script type="text/javascript" src="multibar.min.js"></script>
     </head>
 
     <body>
-        <h2>Multi-bar, jQuery plugin</h2>
-        <p>Multi-bar is a jQuery plugin which you can build custom progress bar with multi and personalized colors. The number and style of the colors are at your choice, so 'as the initial and final values. This allows you to create progress bar completely tailored to your needs. You can assign one or more values to the bar and you'll see them appear as a marker on the bar itself. And, if you want, you can decide to show also the legend of the value.</p>
+        <h2>jQuery Multi-bar v0.2.0</h2>
+        <p>jQuery Multi-bar is a jQuery plugin which you can build custom progress bar with multi and personalized colors. The number and style of the colors are at your choice, so 'as the initial and final values. This allows you to create progress bar completely tailored to your needs. You can assign one or more values to the bar and you'll see them appear as a marker on the bar itself. And, if you want, you can decide to show also the legend of the value.</p>
+        <p>Unlike <a href="http://j-ulrich.github.com/jquery-ui-multiprogressbar" target="_blank">http://j-ulrich.github.com/jquery-ui-multiprogressbar</a> plugin, this plugin adds the ability to include one or more markers that identify some points on the bar and show the relative legend.</p>
         <p>Below you find a number of examples of using the plugin.</p>
-        <p>All info and updated code: <a href="https://github.com/teorossi82/multi-bar">https://github.com/teorossi82/multi-bar</a></p>
+        <p>All info and updated code: <a href="https://github.com/teorossi82/jquery-multi-bar" target="_blank">https://github.com/teorossi82/jquery-multi-bar</a></p>
         <h4>Bar with single marker and default options</h4>
         <div id="boxMultibar_default" style="width:400px;"></div>
         <h4>Bar with single marker with position inside and direction reverse (from max to min)</h4>
@@ -33,8 +34,10 @@
         <script type="text/javascript">
             
             //Bar with single marker and default options
-            var bar = $("#boxMultibar_default").multibar();
-            bar.multibar("setValue",[3]);
+            var options = {
+                initValue:[3]
+            }
+            var bar = $('#boxMultibar_default').multibar(options);
             
             //Bar with single marker and direction reverse (from max to min)
             var bar1 = $("#boxMultibar_default_reverse").multibar(
