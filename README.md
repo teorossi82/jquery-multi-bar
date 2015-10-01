@@ -424,6 +424,7 @@ You can show the legend of your multi-bar, setting in the options object the fie
 ![Alt text](/demo/multi_value_custom_style_legend.png "Bar with multi marker customized and legend")
 
 - Title of the legend
+
 By default the legend does not have a title, but you can decide to add it by setting, in the legend's options, the field `title` with the string corresponding to the title that you want to set.
 ```javascript
     var options = {
@@ -438,6 +439,7 @@ By default the legend does not have a title, but you can decide to add it by set
 ![Alt text](/demo/multi_value_legend_title.png "Bar with multi marker and legend with title")
 
 - Set class for legend's elements
+
 You can set a personalized class, you'll have to add to your css, to title and item of your multi-bar's legend. To do it, set the fields `titleClass` and `itemClass` in the legend's options.
 ```css
     .titleLegend {
