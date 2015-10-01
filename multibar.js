@@ -1,5 +1,5 @@
 /*!
- * jquery-multibar v0.2.0 by @teorossi
+ * jquery-multibar v0.3.0 by @teorossi
  * Copyright (c) 2015-2018 Matteo Rossi
  *
  * https://github.com/teorossi82/jquery-multi-bar
@@ -15,16 +15,18 @@
             mulBar += ' reverse ';
         if(options.size)
             mulBar += ' multi-bar-' + options.size + ' ';
-        mulBar+=' ">';
+        mulBar+='" ';
+        var shadow = options.shadow && shadow_type[options.shadow];
+        if(shadow)
+            mulBar+= ' style="' + shadow_type[options.shadow] + '"';
+        mulBar+='>';
         for(var b=0;b<options.multiBarValue.length;b++){
             var value = options.multiBarValue[b].val;
-            var bgColor = options.multiBarValue[b].bgColor;
-            if(!bgColor)
-                bgColor = colors.defaults[b];
-            if(b==0)
-                mulBar+='<div class="multi-bar-bar" style="background-color:' + bgColor + ';width:' + ((options.multiBarValue[b].val-options.min)/(options.max-options.min))*100 + '%"></div>';
-            else
-                mulBar+='<div class="multi-bar-bar" style="background-color:' + bgColor + ';width:' + ((options.multiBarValue[b].val-options.multiBarValue[b-1].val)/(options.max-options.min))*100 + '%"></div>';
+            var width = b==0 ? 'width:' + ((options.multiBarValue[b].val-options.min)/(options.max-options.min))*100 + '%':'width:' + ((options.multiBarValue[b].val-options.multiBarValue[b-1].val)/(options.max-options.min))*100 + '%';
+            var bg = options.multiBarValue[b].bgClass ? bg = 'class="multi-bar-bar ' + options.multiBarValue[b].bgClass + '" style="' + width + '"':null;
+            if(!bg)
+                bg = options.multiBarValue[b].bgColor ? bg = 'class="multi-bar-bar" style="background-color:' + options.multiBarValue[b].bgColor + ';' + width + '"':'style="background-color:' + colors.defaults[b] + ';' + width + '"';
+            mulBar+='<div ' + bg + '></div>';
         }
         mulBar+='</div>'
         var valBar = '<div class="multi-bar-value-content"><div class="multi-bar-initVal">' + options.min + '</div>';
@@ -142,12 +144,17 @@
 
     var createLegend = function(arValue,options,ele){
         var boxLeg = '<div class="multi-bar-legend-box">';
+        if(options.legend.title){
+            var boxTitleLeg = options.legend.titleClass ? '<div class="' + options.legend.titleClass + '">' + options.legend.title + '</div>':'<div class="multi-bar-legend-title">' + options.legend.title + '</div>'
+            boxLeg+=boxTitleLeg;
+        }
+        var itemClass = options.legend.itemClass ? 'class="multi-bar-legend-item ' + options.legend.itemClass + '"':'class="multi-bar-legend-item"';
         for(var i=0;i<arValue.length;i++){
             var value = arValue[i] && typeof arValue[i]=='object' ? arValue[i].value:arValue[i];
             var label = arValue[i] && typeof arValue[i]=='object' ? arValue[i].label:"Item";
             var color = arValue[i] && typeof arValue[i]=='object' ? arValue[i].color:"black";
 
-            boxLeg+= '<div class="multi-bar-legend-item">' + 
+            boxLeg+= '<div ' + itemClass + '>' + 
                 '<span class="icon-circle" style="color:' + color + '"></span> ' +
                 '<span class="multi-bar-legend-item-label">' + label + ": " + value + '</span>' +
                 '</div>';
@@ -177,6 +184,17 @@
         defaults: ["green","yellow","orange","red","purple","blue","black","white"],
         hot:["#F9F9BD","#F7F411","#ECD024","#FFA500","#E08E00","#FF350A","#E90000","#BE0028","#C10069","#8A0079"],
         cold:["#A4FCB7","#A4FCD6","#A4FCF5","#A4F2FC","#A4E1FC","#A4CDFC","#A4ACFC","#5479CE","#4759FF","#0019FF"]
+    };
+    var shadow_type={
+        center:"box-shadow:0 0px 4px 0 #666",
+        top:"box-shadow:0px -2px 2px 0 #666",
+        left:"box-shadow:-3px 0 2px 0 #666",
+        right:"box-shadow:3px 0 2px 0 #666",
+        bottom:"box-shadow:0px 2px 2px 0 #666",
+        top_left:"box-shadow:-2px -2px 2px 0 #666",
+        top_right:"box-shadow:2px -2px 2px 0 #666",
+        bottom_left:"box-shadow:-2px 2px 2px 0 #666",
+        bottom_right:"box-shadow:2px 2px 2px 0 #666",
     }
     
     var MultiBar = function (element, options) {

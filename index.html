@@ -10,7 +10,7 @@
     </head>
 
     <body>
-        <h2>jQuery Multi-bar v0.2.0</h2>
+        <h2>jQuery Multi-bar v0.3.0</h2>
         <p>jQuery Multi-bar is a jQuery plugin which you can build custom progress bar with multi and personalized colors. The number and style of the colors are at your choice, so 'as the initial and final values. This allows you to create progress bar completely tailored to your needs. You can assign one or more values to the bar and you'll see them appear as a marker on the bar itself. And, if you want, you can decide to show also the legend of the value.</p>
         <p>Unlike <a href="http://j-ulrich.github.com/jquery-ui-multiprogressbar" target="_blank">http://j-ulrich.github.com/jquery-ui-multiprogressbar</a> plugin, this plugin adds the ability to include one or more markers that identify some points on the bar and show the relative legend.</p>
         <p>Below you find a number of examples of using the plugin.</p>
@@ -23,14 +23,92 @@
         <div id="boxMultibar_small" style="width:400px;"></div>
         <h4>Bar with multi marker and custom bar colors</h4>
         <div id="boxMultibar_multiItems_customColors" style="width:400px;"></div>
+        <h4>Bar with multi marker and custom bar classes - 1</h4>
+        <div id="boxMultibar_multiItems_customClass1" style="width:400px;"></div>
+        <h4>Bar with multi marker and custom bar classes - 2</h4>
+        <div id="boxMultibar_multiItems_customClass2" style="width:400px;"></div>
         <h4>Bar with multi marker, custom bar colors and legend</h4>
         <div id="boxMultibar_multiItems_customColors_legend" style="width:400px;"></div>
         <h4>Bar with multi marker's custom style, custom bar colors and legend</h4>
         <div id="boxMultibar_customMultiItems_customColors_legend" style="width:400px;"></div>
+        <h4>Bar with multi marker, custom bar colors and legend with title and personalized style</h4>
+        <div id="boxMultibar_multiItems_customColors_customLegend" style="width:400px;"></div>
         <h4>Bar with scale of hot colors (type:hot)</h4>
         <div id="boxMultibar_hot" style="width:400px;"></div>
         <h4>Bar with scale of cold colors (type:cold)</h4>
         <div id="boxMultibar_cold" style="width:400px;"></div>
+        <style>
+            .gradient-blue{
+                background: #a3aaff; /* Old browsers */
+                background: -moz-linear-gradient(top,  #a3aaff 0%, #0037ff 100%); /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a3aaff), color-stop(100%,#0037ff)); /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(top,  #a3aaff 0%,#0037ff 100%); /* Chrome10+,Safari5.1+ */
+                background: -o-linear-gradient(top,  #a3aaff 0%,#0037ff 100%); /* Opera 11.10+ */
+                background: -ms-linear-gradient(top,  #a3aaff 0%,#0037ff 100%); /* IE10+ */
+                background: linear-gradient(to bottom,  #a3aaff 0%,#0037ff 100%); /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3aaff', endColorstr='#0037ff',GradientType=0 ); /* IE6-9 */
+            }
+            .gradient-green{
+                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b7ffb2+0,0fea00+100 */
+                background: #b7ffb2; /* Old browsers */
+                background: -moz-linear-gradient(top,  #b7ffb2 0%, #0fea00 100%); /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b7ffb2), color-stop(100%,#0fea00)); /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(top,  #b7ffb2 0%,#0fea00 100%); /* Chrome10+,Safari5.1+ */
+                background: -o-linear-gradient(top,  #b7ffb2 0%,#0fea00 100%); /* Opera 11.10+ */
+                background: -ms-linear-gradient(top,  #b7ffb2 0%,#0fea00 100%); /* IE10+ */
+                background: linear-gradient(to bottom,  #b7ffb2 0%,#0fea00 100%); /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7ffb2', endColorstr='#0fea00',GradientType=0 ); /* IE6-9 */
+            }
+            .gradient-black{
+                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a0a0a0+0,000000+100 */
+                background: #a0a0a0; /* Old browsers */
+                background: -moz-linear-gradient(top,  #a0a0a0 0%, #000000 100%); /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a0a0a0), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(top,  #a0a0a0 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+                background: -o-linear-gradient(top,  #a0a0a0 0%,#000000 100%); /* Opera 11.10+ */
+                background: -ms-linear-gradient(top,  #a0a0a0 0%,#000000 100%); /* IE10+ */
+                background: linear-gradient(to bottom,  #a0a0a0 0%,#000000 100%); /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a0a0a0', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+            }
+            .bgBar {
+                background-color:green;
+                background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+                background-size:40px 40px;
+                -webkit-animation: multi-bar-stripes 2s linear infinite;
+                animation: multi-bar-stripes 2s linear infinite
+            }
+            @keyframes multi-bar-stripes {
+                0% {
+                    background-position: 40px 0;
+                }
+                100% {
+                    background-position: 0 0;
+                }
+            }
+            @-webkit-keyframes multi-bar-stripes {
+                from {
+                    background-position: 40px 0
+                }
+
+                to {
+                    background-position: 0 0
+                }
+            }
+            .titleLegend {
+                text-align:left;
+                color:#444;
+                text-transform: uppercase;
+                font-style: italic;
+            }
+            .itemLegend {
+                border: medium none;
+                font-style: italic;
+                padding: 2px;
+            }
+            .itemLegend:nth-child(even) {
+                background-color:#f0f0f0;
+            }
+        </style>
         <script type="text/javascript">
             
             //Bar with single marker and default options
@@ -79,6 +157,48 @@
                 }
             );
             bar2.multibar("setValue",[0,35,60]);
+            
+            //Bar with multi marker and custom bar class - 1
+            var barClass1 = $("#boxMultibar_multiItems_customClass1").multibar(
+                {
+                    multiBarValue:[
+                        {
+                            val:4,
+                            bgClass:"gradient-blue"
+                        },
+                        {
+                            val:7,
+                            bgClass:"gradient-green"
+                        },
+                        {
+                            val:10,
+                            bgClass:"gradient-black"
+                        }
+                    ]
+                }
+            );
+            barClass1.multibar("setValue",[6]);
+            
+            //Bar with multi marker and custom bar class - 2
+            var barClass2 = $("#boxMultibar_multiItems_customClass2").multibar(
+                {
+                    multiBarValue:[
+                        {
+                            val:4,
+                            bgClass:"bgBar"
+                        },
+                        {
+                            val:7,
+                            bgClass:"bgBar"
+                        },
+                        {
+                            val:10,
+                            bgClass:"bgBar"
+                        }
+                    ]
+                }
+            );
+            barClass2.multibar("setValue",[6]);
             
             //Bar with multi marker, custom bar colors and legend
             var bar3 = $("#boxMultibar_multiItems_customColors_legend").multibar(
@@ -150,6 +270,52 @@
                 }
             ];
             bar4.multibar("setValue",val);
+            
+            //Bar with multi marker, custom bar colors and legend with title and personalized style
+            var barCustomLegend = $("#boxMultibar_multiItems_customColors_customLegend").multibar(
+                {
+                    min:20,
+                    max:75,
+                    multiBarValue:[
+                        {
+                            val:40,
+                            bgColor:"red"
+                        },
+                        {
+                            val:50,
+                            bgColor:"yellow"
+                        },
+                        {
+                            val:75,
+                            bgColor:"green"
+                        }
+                    ],
+                    legend:{
+                        show:true,
+                        title:"My Item",
+                        titleClass:"titleLegend",
+                        itemClass:"itemLegend"
+                    }
+                }
+            );
+            var val = [
+                {
+                    label:"Item 1",
+                    value:35,
+                    color:"#444444"
+                },
+                {
+                    label:"Item 2",
+                    value:40,
+                    color:"#FF0000"
+                },
+                {
+                    label:"Item 3",
+                    value:70,
+                    color:"#214AE0"
+                }
+            ];
+            barCustomLegend.multibar('setValue',val);
             
             //Bar with scale of hot colors (type:hot)
             var bar5 = $("#boxMultibar_hot").multibar(

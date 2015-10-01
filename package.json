@@ -1,0 +1,41 @@
+{
+  "name": "jquery-multi-bar",
+  "version": "0.2.1",
+  "description": "jQuery plugin which you can build custom progress bar with multi and personalized colors. The number and style of the colors are at your choice, so 'as the initial and final values. This allows you to create progress bar completely tailored to your needs. You can assign one or more values to the bar and you'll see them appear as a marker on the bar itself. And, if you want, you can decide to show also the legend of the value",
+  "main": [
+    "multibar.css",
+    "multibar.js"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teorossi82/jquery-multi-bar.git"
+  },
+  "keywords": [
+    "bar",
+    "progressbar",
+    "multi bar",
+    "jquery",
+    "color bar",
+    "marker"
+  ],
+  "author": {
+    "name": "Matteo Rossi",
+    "email": "teorossi82@yahoo.it"
+  },
+  "dependencies": {
+    "jquery": "^1.8.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/teorossi82/token-security/LICENSE"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/teorossi82/jquery-multi-bar/issues"
+  },
+  "homepage": "https://github.com/teorossi82/jquery-multi-bar#readme"
+}

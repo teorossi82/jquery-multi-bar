@@ -1,4 +1,4 @@
-# jquery-multi-bar - 0.2.0
+# jquery-multi-bar - 0.3.0
 
 `jquery-multi-bar` is a [jQuery](http://jquery.com) plugin which you can build custom progress bar with multi and personalized colors. The number and style of the colors are at your choice, so 'as the initial and final values. This allows you to create progress bar completely tailored to your needs. You can assign one or more values to the bar and you'll see them appear as a marker on the bar itself. And, if you want, you can decide to show also the legend of the value. Unlike <a href="http://j-ulrich.github.com/jquery-ui-multiprogressbar">http://j-ulrich.github.com/jquery-ui-multiprogressbar</a> plugin, this plugin adds the ability to include one or more markers that identify some points on the bar and show the relative legend.
 
@@ -8,20 +8,25 @@
 
 
 ## Installation
-* Download the latest release: [v0.2.0](https://github.com/teorossi82/jquery-multi-bar/archive/master.zip)
+* Download the latest release: [v0.3.0](https://github.com/teorossi82/jquery-multi-bar/archive/master.zip)
 * Clone the repository: `git clone https://github.com/teorossi82/jquery-multi-bar.git`
+* Install with [Bower](http://bower.io): `bower install jquery-multi-bar`
 
 ## Requirements
 The plugin requires
 * [jQuery 1.4.1+](http://jquery.com)
 
-## What's new in v0.2.0?
-* Add `initValue` option that permit to set the value of your multi-bar's marker(s) at the initialization of the multi-bar.
+## What's new in v0.3.0?
+* Add bower's installation;
+* Add possibility to set class of all multi-bar's blocks and not only background color;
+* Add the field `shadow` in the options to set the shadow of your multi-bar;
+* Add the field `title` in the options of the legend to set a title to your multi-bar's legend;
+* Add style for legend. Now you can set the classes of the title and the items of your multi-bar's legend.
 
 ## Initialization & Usage
 1. copy `multibar.js` (or .min), `multibar.css` (or .min) and `multi-bar-icon` folder into your project
 
-2. include `multibar.js` and `multibar.css`
+2. include `multibar.js` and `multibar.css` in your html
 
 ```html
 <link rel="stylesheet" type="text/css" href="multibar.css" />
@@ -121,53 +126,92 @@ You can customize the look of your multi-bar through a series of settings:
 
 - Set bar colors (multiBarValue)
 
-    > To create a multi-bar with custom colors you have to set in the options the field `multiBarValue`, which consists of an array containing many objects are the blocks where you want to split your multi-bar. Each object in the array is formed by two fields:
+    > To create a multi-bar with custom background colors you have to set in the options the field `multiBarValue`, which consists of an array containing many objects are the blocks where you want to split your multi-bar. Each object in the array is formed by two fields:
     > * `val` that identifies the value up to which the block must arrive. If you want your multi-bar is completely filled, the value of the filed `val` for the last block have to be equal to the maximum value of your multi-bar (10 if the maximum value is set as the default)
-    > * `bgColor` that identifies the background color of the block
+    > * `bgColor` or `bgClass` that identifies the background color of the block or the class that you want to assign at the block. Sets the field `bgColor` if you want that the block of your multi-bar have a background with a single color and flat. By setting the field `bgClass`, instead, you can give to each block a class, you'll have to add to your css, so you can also set gradient or images to your multi-bar's background.
 
-```javascript
-    var options = {
-        multiBarValue:[
-            {
-                val:2,
-                bgColor:"#0037FF"
-            },
-            {
-                val:4,
-                bgColor:"#10FF00"
-            },
-            {
-                val:8,
-                bgColor:"#000"
-            }
-        ]
-    };
-    var bar = $('#boxMultibar').multibar(options);
-    bar.multibar('setValue',[6]);
-```
-![Alt text](/demo/options_customBarColors_noFill.png "Bar with single marker and options: multiBarValue")
+    * `bgColor`
+    
+    ```javascript
+        var options = {
+            multiBarValue:[
+                {
+                    val:4,
+                    bgColor:"#0037FF"
+                },
+                {
+                    val:7,
+                    bgColor:"#10FF00"
+                },
+                {
+                    val:10,
+                    bgColor:"#000"
+                }
+            ]
+        };
+        var bar = $('#boxMultibar').multibar(options);
+        bar.multibar('setValue',[6]);
+    ```
+    ![Alt text](/demo/options_customBarColors.png "Bar with single marker and options: multiBarValue with bgColor")
 
-```javascript
-    var options = {
-        multiBarValue:[
-            {
-                val:4,
-                bgColor:"#0037FF"
-            },
-            {
-                val:7,
-                bgColor:"#10FF00"
-            },
-            {
-                val:10,
-                bgColor:"#000"
-            }
-        ]
-    };
-    var bar = $('#boxMultibar').multibar(options);
-    bar.multibar('setValue',[6]);
-```
-![Alt text](/demo/options_customBarColors.png "Bar with single marker and options: multiBarValue")
+    * `bgClass`
+    
+    ```css
+        .gradient-blue{
+            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a3aaff+0,0037ff+100 */
+            background: #a3aaff; /* Old browsers */
+            background: -moz-linear-gradient(top,  #a3aaff 0%, #0037ff 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a3aaff), color-stop(100%,#0037ff)); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  #a3aaff 0%,#0037ff 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  #a3aaff 0%,#0037ff 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  #a3aaff 0%,#0037ff 100%); /* IE10+ */
+            background: linear-gradient(to bottom,  #a3aaff 0%,#0037ff 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3aaff', endColorstr='#0037ff',GradientType=0 ); /* IE6-9 */
+        }
+        .gradient-green{
+            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b7ffb2+0,0fea00+100 */
+            background: #b7ffb2; /* Old browsers */
+            background: -moz-linear-gradient(top,  #b7ffb2 0%, #0fea00 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b7ffb2), color-stop(100%,#0fea00)); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  #b7ffb2 0%,#0fea00 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  #b7ffb2 0%,#0fea00 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  #b7ffb2 0%,#0fea00 100%); /* IE10+ */
+            background: linear-gradient(to bottom,  #b7ffb2 0%,#0fea00 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7ffb2', endColorstr='#0fea00',GradientType=0 ); /* IE6-9 */
+        }
+        .gradient-black{
+            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a0a0a0+0,000000+100 */
+            background: #a0a0a0; /* Old browsers */
+            background: -moz-linear-gradient(top,  #a0a0a0 0%, #000000 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a0a0a0), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  #a0a0a0 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  #a0a0a0 0%,#000000 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  #a0a0a0 0%,#000000 100%); /* IE10+ */
+            background: linear-gradient(to bottom,  #a0a0a0 0%,#000000 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a0a0a0', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+        }
+    ```
+    ```javascript
+        var options = {
+            multiBarValue:[
+                {
+                    val:4,
+                    bgClass:"gradient-blue"
+                },
+                {
+                    val:7,
+                    bgClass:"gradient-green"
+                },
+                {
+                    val:10,
+                    bgClass:"gradient-black"
+                }
+            ]
+        };
+        var bar = $('#boxMultibar').multibar(options);
+        bar.multibar('setValue',[6]);
+    ```
+    ![Alt text](/demo/options_customBarClass.png "Bar with single marker and options: multiBarValue with bgClass")   
 
 - Direction reverse, progress bar from maximum value to minimum value (reverse)
 ```javascript
@@ -222,6 +266,27 @@ You can customize the look of your multi-bar through a series of settings:
         bar.multibar('setValue',[4]);
     ```
     ![Alt text](/demo/options_size_small.png "Bar with single marker and options: size small")
+    
+- Set the shadow of your multi-bar (shadow)
+```javascript
+    var options = {
+        shadow:"top_right"
+    };
+    var bar = $('#boxMultibar').multibar(options);
+    bar.multibar('setValue',[8]);
+```
+![Alt text](/demo/options_shadow.png "Bar with single marker and options: shadow")
+
+> You can choose between the following type of shadow:
+> * `center`
+> * `top`
+> * `bottom`
+> * `left`
+> * `right`
+> * `top_left`
+> * `top_right`
+> * `bottom_left`
+> * `bottom_right`
 
 ### Type of bar
 In addition to the classic multi-bar, with default or custom settings, you can also create other types of multi-bar, simply by specifying in the options the field `type`:
@@ -358,6 +423,52 @@ You can show the legend of your multi-bar, setting in the options object the fie
 ```
 ![Alt text](/demo/multi_value_custom_style_legend.png "Bar with multi marker customized and legend")
 
+- Title of the legend
+By default the legend does not have a title, but you can decide to add it by setting, in the legend's options, the field `title` with the string corresponding to the title that you want to set.
+```javascript
+    var options = {
+        legend:{
+            show:true,
+            title:"My Bar Items"
+        }
+    };
+    var bar = $('#boxMultibar').multibar(options);
+    bar.multibar('setValue',[3,4,7]);
+```
+![Alt text](/demo/multi_value_legend_title.png "Bar with multi marker and legend with title")
+
+- Set class for legend's elements
+You can set a personalized class, you'll have to add to your css, to title and item of your multi-bar's legend. To do it, set the fields `titleClass` and `itemClass` in the legend's options.
+```css
+    .titleLegend {
+        text-align:left;
+        color:#444;
+        text-transform: uppercase;
+        font-style: italic;
+    }
+    .itemLegend {
+        border: medium none;
+        font-style: italic;
+        padding: 2px;
+    }
+    .itemLegend:nth-child(even) {
+        background-color:#f0f0f0;
+    }
+```
+```javascript
+    var options = {
+        legend:{
+            show:true,
+            title:"My Item",
+            titleClass:"titleLegend",
+            itemClass:"itemLegend"
+        }
+    };
+    var bar = $('#boxMultibar').multibar(options);
+    bar.multibar('setValue',[8,6,3]);
+```
+![Alt text](/demo/multi_value_legend_class.png "Bar with multi marker and legend with personalized classes")
+
 #### Content of the Legend
 By default the legend appear inside the element where you have initialized the multi-bar. If you want to put the legend in another element of the dom, you have to pass in the options of the legend, the filed `content`, where you can specified the content element of the legend.
 
@@ -383,9 +494,7 @@ If you want to report me bugs, suggestions for improvement or work togheter to m
 
 ## Work in progress
 - Add more type of bar (thermometer, 3d);
-- Add style for legend;
 - Add "position" in setting ("horizontal","vertical");
-- Add possibility to set class of all bar blocks and not only background color;
 - Add method and event.
 
 ## Copyright and license
