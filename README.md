@@ -325,7 +325,7 @@ You can customize the look of your multi-bar through a series of settings:
 > * `bottom_left`
 > * `bottom_right`
 
-- Hide all values of multi-bar's block (multiBarValueVisibility) From version 0.4.0
+- Hide all values of multi-bar's block (multiBarValueVisibility) (From version 0.4.0)
 
     > With this option you can hide the values of all your multi-bar's blocks, except the first and the last which can't be hidden.
     
