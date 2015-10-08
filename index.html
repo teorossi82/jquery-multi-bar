@@ -4,13 +4,13 @@
     <head>
         <meta charset="UTF-8">
         <title>jQuery MultiBar</title>
-        <link rel="stylesheet" type="text/css" href="multibar.min.css" />
+        <link rel="stylesheet" type="text/css" href="multibar.css" />
         <script type="text/javascript" src="jquery/jquery-2.1.4.min.js"></script>
-        <script type="text/javascript" src="multibar.min.js"></script>
+        <script type="text/javascript" src="multibar.js"></script>
     </head>
 
     <body>
-        <h2>jQuery Multi-bar v0.3.0</h2>
+        <h2>jQuery Multi-bar v0.4.0</h2>
         <p>jQuery Multi-bar is a jQuery plugin which you can build custom progress bar with multi and personalized colors. The number and style of the colors are at your choice, so 'as the initial and final values. This allows you to create progress bar completely tailored to your needs. You can assign one or more values to the bar and you'll see them appear as a marker on the bar itself. And, if you want, you can decide to show also the legend of the value.</p>
         <p>Unlike <a href="http://j-ulrich.github.com/jquery-ui-multiprogressbar" target="_blank">http://j-ulrich.github.com/jquery-ui-multiprogressbar</a> plugin, this plugin adds the ability to include one or more markers that identify some points on the bar and show the relative legend.</p>
         <p>Below you find a number of examples of using the plugin.</p>
@@ -27,16 +27,26 @@
         <div id="boxMultibar_multiItems_customClass1" style="width:400px;"></div>
         <h4>Bar with multi marker and custom bar classes - 2</h4>
         <div id="boxMultibar_multiItems_customClass2" style="width:400px;"></div>
+        <h4>Bar with some values of blocks hidden</h4>
+        <div id="boxMultibar_hidden" style="width:400px;"></div>
+        <h4>Bar with all values of blocks hidden</h4>
+        <div id="boxMultibar_multiBarValueVisibility" style="width:400px;"></div>
         <h4>Bar with multi marker, custom bar colors and legend</h4>
         <div id="boxMultibar_multiItems_customColors_legend" style="width:400px;"></div>
         <h4>Bar with multi marker's custom style, custom bar colors and legend</h4>
         <div id="boxMultibar_customMultiItems_customColors_legend" style="width:400px;"></div>
         <h4>Bar with multi marker, custom bar colors and legend with title and personalized style</h4>
         <div id="boxMultibar_multiItems_customColors_customLegend" style="width:400px;"></div>
+        <h4>Bar with shadow (shadow:"top_right")</h4>
+        <div id="boxMultibar_shadow" style="width:400px;"></div>
         <h4>Bar with scale of hot colors (type:hot)</h4>
         <div id="boxMultibar_hot" style="width:400px;"></div>
         <h4>Bar with scale of cold colors (type:cold)</h4>
         <div id="boxMultibar_cold" style="width:400px;"></div>
+        <h4>Multi Bar Thermometer</h4>
+        <div id="boxMultibar_thermometer" style="width:400px;"></div>
+        <h4>Multi Bar Thermometer combined with type:"hot" and size:"small"</h4>
+        <div id="boxMultibar_thermometer_hot" style="width:400px;"></div>
         <style>
             .gradient-blue{
                 background: #a3aaff; /* Old browsers */
@@ -200,6 +210,39 @@
             );
             barClass2.multibar("setValue",[6]);
             
+            //Bar with some values of blocks hidden
+            var options = {
+                multiBarValue:[
+                    {
+                        visibility:"hidden",
+                        val:2,
+                        bgColor:"#AAAAAA"
+                    },
+                    {
+                        val:4,
+                        bgColor:"#0037FF"
+                    },
+                    {
+                        visibility:"hidden",
+                        val:7,
+                        bgColor:"#10FF00"
+                    },
+                    {
+                        val:10,
+                        bgColor:"#000"
+                    }
+                ]
+            };
+            var barSomeBlocksHidden = $('#boxMultibar_hidden').multibar(options);
+            barSomeBlocksHidden.multibar('setValue',[6]);
+            
+            //Bar with all values of blocks hidden
+            var options = {
+                multiBarValueVisibility:"hidden"
+            };
+            var barAllBlocksHidden = $('#boxMultibar_multiBarValueVisibility').multibar(options);
+            barAllBlocksHidden.multibar('setValue',[6]);
+            
             //Bar with multi marker, custom bar colors and legend
             var bar3 = $("#boxMultibar_multiItems_customColors_legend").multibar(
                 {
@@ -317,6 +360,14 @@
             ];
             barCustomLegend.multibar('setValue',val);
             
+            //Bar with shadow (shadow:"top_right")
+            var barShadow = $("#boxMultibar_shadow").multibar(
+                {
+                    shadow:"top_right"
+                }
+            );
+            barShadow.multibar("setValue",[6]);
+            
             //Bar with scale of hot colors (type:hot)
             var bar5 = $("#boxMultibar_hot").multibar(
                 {
@@ -336,6 +387,40 @@
                 }
             );
             bar6.multibar("setValue",[8,30,47,80]);
+            
+            //Multi Bar Thermometer
+            var options = {
+                min:35,
+                max:43,
+                multiBarValue:[
+                    {
+                        val:37,
+                        bgColor:"yellow"
+                    },
+                    {
+                        val:39.5,
+                        bgColor:"orange"
+                    },
+                    {
+                        val:43,
+                        bgColor:"red"
+                    }
+                ],
+                thermometer:true
+            };
+            var barThermometer = $('#boxMultibar_thermometer').multibar(options);
+            barThermometer.multibar('setValue',[37.8]);
+            
+            //Multi Bar Thermometer combined with type:"hot" and size:"small"
+            var options = {
+                min:35,
+                max:43,
+                type:"hot",
+                size:"small",
+                thermometer:true
+            };
+            var barThermometerHot = $('#boxMultibar_thermometer_hot').multibar(options);
+            barThermometerHot.multibar('setValue',[37.8]);
         </script>
     </body>
 </html>

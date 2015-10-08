@@ -1,4 +1,4 @@
-# jquery-multi-bar - 0.3.0
+# jquery-multi-bar - 0.4.0
 
 `jquery-multi-bar` is a [jQuery](http://jquery.com) plugin which you can build custom progress bar with multi and personalized colors. The number and style of the colors are at your choice, so 'as the initial and final values. This allows you to create progress bar completely tailored to your needs. You can assign one or more values to the bar and you'll see them appear as a marker on the bar itself. And, if you want, you can decide to show also the legend of the value. Unlike <a href="http://j-ulrich.github.com/jquery-ui-multiprogressbar">http://j-ulrich.github.com/jquery-ui-multiprogressbar</a> plugin, this plugin adds the ability to include one or more markers that identify some points on the bar and show the relative legend.
 
@@ -8,7 +8,7 @@
 
 
 ## Installation
-* Download the latest release: [v0.3.0](https://github.com/teorossi82/jquery-multi-bar/archive/master.zip)
+* Download the latest release: [v0.4.0](https://github.com/teorossi82/jquery-multi-bar/archive/master.zip)
 * Clone the repository: `git clone https://github.com/teorossi82/jquery-multi-bar.git`
 * Install with [Bower](http://bower.io): `bower install jquery-multi-bar`
 
@@ -16,12 +16,10 @@
 The plugin requires
 * [jQuery 1.4.1+](http://jquery.com)
 
-## What's new in v0.3.0?
-* Add bower's installation;
-* Add possibility to set class of all multi-bar's blocks and not only background color;
-* Add the field `shadow` in the options to set the shadow of your multi-bar;
-* Add the field `title` in the options of the legend to set a title to your multi-bar's legend;
-* Add style for legend. Now you can set the classes of the title and the items of your multi-bar's legend.
+## What's new in v0.4.0?
+* Fixed bug in multi-bar `type:cold` and `type:hot` for a miscalculation in the values of the multi-bar's blocks.
+* Add the option `thermometer` that show your multi-bar inside a simple and awesome thermometer. Works with all other options, so you can combine `thermometer:true` and `type:hot`, or `thermometer:true` and `size:small` (view section "Multi Bar Thermometer").
+* Add the possibility to hide all values of your multi-bar's block (view section "Settings - Hide all values of multi-bar's block"), or only some of them (view section "Settings - Set bar colors").
 
 ## Initialization & Usage
 1. copy `multibar.js` (or .min), `multibar.css` (or .min) and `multi-bar-icon` folder into your project
@@ -78,36 +76,43 @@ var bar = $('#boxMultibar').multibar(options);
 Initialize a multi-bar without passing any options creates a multi-bar with the default options that are:
 
 ```javascript
-{
-    min:0,
-    max:10,
-    type:"normal",
-    reverse:false,
-    posMarker:"outside",
-    iconMarker:"arrow-down",
-    multiBarValue:[
-        {
-            val:2,
-            bgColor:"green"
-        },
-        {
-            val:4,
-            bgColor:"yellow"
-        },
-        {
-            val:6,
-            bgColor:"orange"
-        },
-        {
-            val:8,
-            bgColor:"red"
-        },
-        {
-            val:10,
-            bgColor:"purple"
-        }
-    ]
-};
+    {
+        min:0,
+        max:10,
+        type:"normal",
+        reverse:false,
+        posMarker:"outside",
+        iconMarker:"arrow-down",
+        multiBarValueVisibility:"visible", /* from v0.4.0 */
+        shadow:false, /* from v0.3.0 */
+        multiBarValue:[
+            {
+                visibility:"visible", /* from v0.4.0 */
+                val:2,
+                bgColor:"green"
+            },
+            {
+                visibility:"visible", /* from v0.4.0 */
+                val:4,
+                bgColor:"yellow"
+            },
+            {
+                visibility:"visible", /* from v0.4.0 */
+                val:6,
+                bgColor:"orange"
+            },
+            {
+                visibility:"visible", /* from v0.4.0 */
+                val:8,
+                bgColor:"red"
+            },
+            {
+                visibility:"visible", /* from v0.4.0 */
+                val:10,
+                bgColor:"purple"
+            }
+        ]
+    };
 ```
 ![Alt text](/demo/multi_bar_default.png "Bar without marker and default options")
 
@@ -154,7 +159,7 @@ You can customize the look of your multi-bar through a series of settings:
     ```
     ![Alt text](/demo/options_customBarColors.png "Bar with single marker and options: multiBarValue with bgColor")
 
-    * `bgClass`
+    * `bgClass` (From version 0.3.0)
     
     ```css
         .gradient-blue{
@@ -211,7 +216,39 @@ You can customize the look of your multi-bar through a series of settings:
         var bar = $('#boxMultibar').multibar(options);
         bar.multibar('setValue',[6]);
     ```
-    ![Alt text](/demo/options_customBarClass.png "Bar with single marker and options: multiBarValue with bgClass")   
+    ![Alt text](/demo/options_customBarClass.png "Bar with single marker and options: multiBarValue with bgClass") 
+    
+    > Setting the multiBarValue array of objects, you can decide to hide one or some of the values of your multi-bar's blocks. You can do that adding the field `visibility:"hidden"` to the block's object for wich you want to hide the value. See the example below:
+    
+    * `visibility:"hidden"` (From version 0.4.0)
+    
+    ```javascript
+        var options = {
+            multiBarValue:[
+                {
+                    visibility:"hidden",
+                    val:2,
+                    bgColor:"#AAAAAA"
+                },
+                {
+                    val:4,
+                    bgColor:"#0037FF"
+                },
+                {
+                    visibility:"hidden",
+                    val:7,
+                    bgColor:"#10FF00"
+                },
+                {
+                    val:10,
+                    bgColor:"#000"
+                }
+            ]
+        };
+        var bar = $('#boxMultibar').multibar(options);
+        bar.multibar('setValue',[6]);
+    ```
+    ![Alt text](/demo/options_visibility.png "Bar with single marker and options: multiBarValue with visibility")
 
 - Direction reverse, progress bar from maximum value to minimum value (reverse)
 ```javascript
@@ -267,7 +304,7 @@ You can customize the look of your multi-bar through a series of settings:
     ```
     ![Alt text](/demo/options_size_small.png "Bar with single marker and options: size small")
     
-- Set the shadow of your multi-bar (shadow)
+- Set the shadow of your multi-bar (shadow) (From version 0.3.0)
 ```javascript
     var options = {
         shadow:"top_right"
@@ -287,6 +324,43 @@ You can customize the look of your multi-bar through a series of settings:
 > * `top_right`
 > * `bottom_left`
 > * `bottom_right`
+
+- Hide all values of multi-bar's block (multiBarValueVisibility) From version 0.4.0
+
+    > With this option you can hide the values of all your multi-bar's blocks, except the first and the last which can't be hidden.
+    
+```javascript
+    var options = {
+        min:0,
+        max:10,
+        multiBarValue:[
+            {
+                val:2,
+                bgColor:"green"
+            },
+            {
+                val:4,
+                bgColor:"yellow"
+            },
+            {
+                val:6,
+                bgColor:"orange"
+            },
+            {
+                val:8,
+                bgColor:"red"
+            },
+            {
+                val:10,
+                bgColor:"purple"
+            }
+        ],
+        multiBarValueVisibility:"hidden"
+    };
+    var bar = $('#boxMultibar').multibar(options);
+    bar.multibar('setValue',[8]);
+```
+![Alt text](/demo/options_multiBarValueVisibility.png "Bar with option multiBarValueVisibility:hidden")
 
 ### Type of bar
 In addition to the classic multi-bar, with default or custom settings, you can also create other types of multi-bar, simply by specifying in the options the field `type`:
@@ -327,6 +401,50 @@ In addition to the classic multi-bar, with default or custom settings, you can a
     bar.multibar('setValue',[-40]);
 ```
 ![Alt text](/demo/options_type_cold_min_max.png "Bar with single marker, type cold and options: min and max")
+
+### Multi Bar Thermometer (From version 0.4.0)
+Setting a simple option (`thermometer:true`) you can create not only a custom multi-bar, but your custom thermometer! And you can combine with this option all the other multi-bar's options, like the `type ("hot" or "cold")` or the `size ("small" or "big")`.
+
+- Simple Multi Bar Thermometer to measure the fever.
+    
+```javascript
+    var options = {
+        min:35,
+        max:43,
+        multiBarValue:[
+            {
+                val:37,
+                bgColor:"yellow"
+            },
+            {
+                val:39.5,
+                bgColor:"orange"
+            },
+            {
+                val:43,
+                bgColor:"red"
+            }
+        ],
+        thermometer:true
+    };
+    var bar = $('#boxMultibar').multibar(options);
+    bar.multibar('setValue',[37.8]);
+```
+![Alt text](/demo/multi-bar-thermometer.png "Simple Multi Bar Thermometer")
+
+- Multi Bar Thermometer combined with Multi Bar Type "hot".
+    
+```javascript
+    var options = {
+        min:35,
+        max:43,
+        type:"hot",
+        thermometer:true
+    };
+    var bar = $('#boxMultibar').multibar(options);
+    bar.multibar('setValue',[37.8]);
+```
+![Alt text](/demo/multi-bar-thermometer_hot.png "Multi Bar Thermometer combined with Multi Bar Type hot")
 
 
 ## Methods
@@ -423,7 +541,7 @@ You can show the legend of your multi-bar, setting in the options object the fie
 ```
 ![Alt text](/demo/multi_value_custom_style_legend.png "Bar with multi marker customized and legend")
 
-- Title of the legend
+- Title of the legend (From version 0.3.0)
 
 By default the legend does not have a title, but you can decide to add it by setting, in the legend's options, the field `title` with the string corresponding to the title that you want to set.
 ```javascript
@@ -438,7 +556,7 @@ By default the legend does not have a title, but you can decide to add it by set
 ```
 ![Alt text](/demo/multi_value_legend_title.png "Bar with multi marker and legend with title")
 
-- Set class for legend's elements
+- Set class for legend's elements (From version 0.3.0)
 
 You can set a personalized class, you'll have to add to your css, to title and item of your multi-bar's legend. To do it, set the fields `titleClass` and `itemClass` in the legend's options.
 ```css
@@ -495,7 +613,7 @@ By default the legend appear inside the element where you have initialized the m
 If you want to report me bugs, suggestions for improvement or work togheter to maintain this plugin, please write me at email: teorossi82@yahoo.it.
 
 ## Work in progress
-- Add more type of bar (thermometer, 3d);
+- Add 3d option;
 - Add "position" in setting ("horizontal","vertical");
 - Add method and event.
 

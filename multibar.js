@@ -1,5 +1,5 @@
 /*!
- * jquery-multibar v0.3.0 by @teorossi
+ * jquery-multibar v0.4.0 by @teorossi
  * Copyright (c) 2015-2018 Matteo Rossi
  *
  * https://github.com/teorossi82/jquery-multi-bar
@@ -13,8 +13,6 @@
         var mulBar = '<div class="multi-bar-box'
         if(options.reverse)
             mulBar += ' reverse ';
-        if(options.size)
-            mulBar += ' multi-bar-' + options.size + ' ';
         mulBar+='" ';
         var shadow = options.shadow && shadow_type[options.shadow];
         if(shadow)
@@ -23,9 +21,7 @@
         for(var b=0;b<options.multiBarValue.length;b++){
             var value = options.multiBarValue[b].val;
             var width = b==0 ? 'width:' + ((options.multiBarValue[b].val-options.min)/(options.max-options.min))*100 + '%':'width:' + ((options.multiBarValue[b].val-options.multiBarValue[b-1].val)/(options.max-options.min))*100 + '%';
-            var bg = options.multiBarValue[b].bgClass ? bg = 'class="multi-bar-bar ' + options.multiBarValue[b].bgClass + '" style="' + width + '"':null;
-            if(!bg)
-                bg = options.multiBarValue[b].bgColor ? bg = 'class="multi-bar-bar" style="background-color:' + options.multiBarValue[b].bgColor + ';' + width + '"':'style="background-color:' + colors.defaults[b] + ';' + width + '"';
+            var bg = options.multiBarValue[b].bgClass ? 'class="multi-bar-bar ' + options.multiBarValue[b].bgClass + '" style="' + width + '"':options.multiBarValue[b].bgColor ? 'class="multi-bar-bar" style="background-color:' + options.multiBarValue[b].bgColor + ';' + width + '"':'class="multi-bar-bar" style="' + width + '"';
             mulBar+='<div ' + bg + '></div>';
         }
         mulBar+='</div>'
@@ -35,10 +31,14 @@
         for(var c=0;c<options.multiBarValue.length;c++){
             if(options.multiBarValue[c].val==options.max)
                 valBar+='<div class="multi-bar-value-box" style="width:' + ((options.multiBarValue[c].val-options.multiBarValue[c-1].val)/(options.max-options.min))*100 + '%"></div>';
-            else if(c==0)
-                valBar+='<div class="multi-bar-value-box" style="width:' + ((options.multiBarValue[c].val-options.min)/(options.max-options.min))*100 + '%"><div class="multi-bar-value">' + options.multiBarValue[c].val + '</div></div>';
-            else
-                valBar+='<div class="multi-bar-value-box" style="width:' + ((options.multiBarValue[c].val-options.multiBarValue[c-1].val)/(options.max-options.min))*100 + '%"><div class="multi-bar-value">' + options.multiBarValue[c].val + '</div></div>';
+            else if(c==0){
+                var visibility = options.multiBarValue[c].visibility ? options.multiBarValue[c].visibility : "visible";
+                valBar+='<div class="multi-bar-value-box ' + visibility + '" style="width:' + ((options.multiBarValue[c].val-options.min)/(options.max-options.min))*100 + '%;"><div class="multi-bar-value">' + options.multiBarValue[c].val + '</div></div>';
+            }
+            else{
+                var visibility = options.multiBarValue[c].visibility ? options.multiBarValue[c].visibility : "visible";
+                valBar+='<div class="multi-bar-value-box ' + visibility + '" style="width:' + ((options.multiBarValue[c].val-options.multiBarValue[c-1].val)/(options.max-options.min))*100 + '%;"><div class="multi-bar-value">' + options.multiBarValue[c].val + '</div></div>';
+            }
         }
         valBar+='<div class="multi-bar-lastVal">' + options.max + '</div></div>';
 
@@ -67,7 +67,7 @@
             if(c==colors.hot.length-1)
                 valBar+='<div class="multi-bar-value-box" style="width:10%"></div>';
             else 
-                valBar+='<div class="multi-bar-value-box" style="width:10%"><div class="multi-bar-value">' + parseInt(indice) + '</div></div>';
+                valBar+='<div class="multi-bar-value-box" style="width:10%"><div class="multi-bar-value">' + indice.toFixed(1) + '</div></div>';
         }
         valBar+='<div class="multi-bar-lastVal">' + options.max + '</div></div>';
 
@@ -96,7 +96,7 @@
             if(c==colors.cold.length-1)
                 valBar+='<div class="multi-bar-value-box" style="width:10%"></div>';
             else 
-                valBar+='<div class="multi-bar-value-box" style="width:10%"><div class="multi-bar-value">' + parseInt(indice) + '</div></div>';
+                valBar+='<div class="multi-bar-value-box" style="width:10%"><div class="multi-bar-value">' + indice.toFixed(1) + '</div></div>';
         }
         valBar+='<div class="multi-bar-lastVal">' + options.max + '</div></div>';
 
@@ -169,6 +169,10 @@
             $(ele.find(".multi-bar-content")[0]).removeClass("no-legend");
             $(ele.find(".multi-bar-content")[0]).addClass("yes-legend");
             $(ele.find(".multi-bar-legend-box")[0]).css("width","28%");
+            if(options.thermometer){
+                var width_content = options.size && options.size == "big" ?  (parseFloat($(ele.find(".multi-bar")[0]).css("width"))/100*68)-62:(parseFloat($(ele.find(".multi-bar")[0]).css("width"))/100*68)-51;
+                $(ele.find(".multi-bar-content")[0]).css("width",width_content + "px");
+            }
         }
         else{
             $($(conLegend).find(".multi-bar-legend-box")[0]).remove();
@@ -201,7 +205,23 @@
         
         this.element = $(element);
         
-        var box = '<div class="multi-bar"><div class="multi-bar-content no-legend"><div class="multi-bar-marker-content"></div>';
+        var box = '<div class="multi-bar';
+        
+        if(options.size)
+            box += ' multi-bar-' + options.size + ' ';
+        
+        if(options.multiBarValueVisibility && options.multiBarValueVisibility == "hidden")
+            box += ' multi-bar-value-box-hidden ';
+            
+        if(options.thermometer){
+            var pos_bg_init = !options.reverse ? 0 : options.type && colors[options.type] ? colors[options.type].length-1 : options.multiBarValue.length-1;
+            var bg_init = options.type && colors[options.type] ? 'class="thermometer_init" style="background-color:' + colors[options.type][pos_bg_init] + ';"' : options.multiBarValue[pos_bg_init].bgClass ? 'class="thermometer_init ' + options.multiBarValue[pos_bg_init].bgClass + '"': options.multiBarValue[pos_bg_init].bgColor ? 'class="thermometer_init" style="background-color:' + options.multiBarValue[pos_bg_init].bgColor + ';"':'class="thermometer_init"';
+            //if(!bg_init)
+                //bg_init = options.multiBarValue[0].bgColor ? 'class="thermometer_init" style="background-color:' + options.multiBarValue[0].bgColor + ';"':'class="thermometer_init"';
+            box += ' thermometer"><div class="multi-bar-content no-legend"><div ' + bg_init + '></div><div class="thermometer_end"></div><div class="multi-bar-marker-content"></div>';
+        }
+        else
+            box+='"><div class="multi-bar-content no-legend"><div class="multi-bar-marker-content"></div>';
         
         var bar;
         if(options.type && options.type=="hot")
@@ -275,6 +295,7 @@
                     for(var i=0;i<5;i++){
                         options.multiBarValue.push(
                             {
+                                visibility:"visible",
                                 val:parseInt(indice),
                                 bgColor:colors.defaults[i]
                             }
@@ -295,31 +316,39 @@
         min:0,
         max:10,
         type:"normal",
+        thermometer:false,
         reverse:false,
         posMarker:"outside",
         iconMarker:"arrow-down",
         multiBarValue:[
             {
+                visibility:"visible",
                 val:2,
                 bgColor:"green"
             },
             {
+                visibility:"visible",
                 val:4,
                 bgColor:"yellow"
             },
             {
+                visibility:"visible",
                 val:6,
                 bgColor:"orange"
             },
             {
+                visibility:"visible",
                 val:8,
                 bgColor:"red"
             },
             {
+                visibility:"visible",
                 val:10,
                 bgColor:"purple"
             }
-        ]
+        ],
+        multiBarValueVisibility:"visible",
+        shadow:false
     };
 
 }(jQuery));
